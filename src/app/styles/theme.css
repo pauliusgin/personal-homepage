@@ -1,0 +1,18 @@
+/* next-themes is configured with `attribute="class"`, so `dark:` utilities must
+   follow the `.dark` class on <html> rather than the OS media query. Never add a
+   raw `@media (prefers-color-scheme: dark)` rule here — it would fight the
+   toggle instead of following it. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* `inline` makes the utilities emit `var(--background)` etc. directly, so they
+   re-resolve when the `.dark` class flips the underlying custom properties.
+
+   Only the two tokens a utility is actually written against live here. Every
+   other colour in `variables.css` is consumed through `var()` in a component
+   file, which needs no `--color-*` alias — adding one just emits a utility
+   class nobody calls. Add the alias when the first `bg-surface` is written,
+   not before. */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}

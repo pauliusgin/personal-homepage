@@ -1,0 +1,38 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   The whole stylesheet, in cascade order. Imports, plus the `overflow-x` pair
+   that has to sit on `html`/`body` together — nothing else belongs here.
+
+   Tailwind v4 resolves `@import` itself — no postcss-import — and inlines each
+   file at the point it is named, so this list *is* the cascade. Two consequences
+   worth knowing before reordering it:
+
+     · `tailwindcss` first, always. Its `@layer` declaration has to precede the
+       layers it is meant to contain.
+     · `variables.css` before everything that overrides a token. `header-band.css`
+       relies on this: it re-declares `--header-height` on `:root` below 640px.
+
+   Per the CSS spec `@import` may only be preceded by `@charset` and `@layer`, so
+   a stray rule added above these lines would silently drop the imports that
+   follow it.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@import "tailwindcss";
+
+@import "./styles/variables.css";
+@import "./styles/theme.css";
+@import "./styles/typography.css";
+@import "./styles/page-layout.css";
+@import "./styles/header/header-band.css";
+@import "./styles/header/wordmark.css";
+@import "./styles/header/header-controls.css";
+@import "./styles/header/search-palette.css";
+@import "./styles/section-rows.css";
+@import "./styles/motion.css";
+
+html {
+  overflow-x: auto;
+}
+
+body {
+  overflow-x: auto;
+}

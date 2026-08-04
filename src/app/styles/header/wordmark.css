@@ -1,0 +1,67 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Wordmark — the header band's left child
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.wordmark {
+  display: flex;
+  align-items: center;
+  gap: 2px; /* tighter than the rows' 4px — the mark reads as one locked unit */
+  padding: var(--page-gutter);
+  /* Terminus ships 400 and 700 and nothing between, so any intermediate weight
+     silently resolves to one of the two. Pick from the two on purpose. */
+  font-weight: 400;
+  text-transform: uppercase;
+  white-space: pre;
+}
+
+/* The two faces of the name — see SiteWordmark. The <640px block below swaps
+   them. */
+.wordmark-short {
+  display: none;
+}
+
+.wordmark-cursor {
+  color: var(--accent-primary);
+  opacity: 0.9;
+}
+
+/* The ← that follows the `|` off the homepage — the mark's only clickable part.
+   It carries the rows' secondary-ink opacity rather than the wordmark's full
+   ink, so it reads as a control sitting beside the name, not part of it.
+
+   The glyph is the shared 20px icon box — the magnifier's size, so the two ends
+   of the header carry marks of one weight. Centring it in a 24 × 24 box is what
+   satisfies WCAG 2.5.8 (Target Size, Minimum), and the 2px of slack it leaves on
+   the left adds to the wordmark's 2px gap for the rows' 4px between the `|` and
+   the arrow. */
+.wordmark-back-link {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: inherit;
+  text-decoration: none;
+  opacity: var(--ink-secondary-opacity);
+  transition:
+    color var(--duration-tint) var(--ease-out-expo),
+    opacity var(--duration-tint) var(--ease-out-expo);
+}
+
+.wordmark-back-link:hover {
+  color: var(--accent-primary);
+  opacity: 1;
+}
+
+/* One of the two things the header is allowed to change below 640px — see the
+   width budget in `header-band.css`. */
+@media (width < --theme(--breakpoint-sm)) {
+  .wordmark-full {
+    display: none;
+  }
+
+  .wordmark-short {
+    display: inline;
+  }
+}

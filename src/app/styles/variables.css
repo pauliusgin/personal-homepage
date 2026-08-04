@@ -1,0 +1,64 @@
+:root {
+  /* LIGHT — warm cream paper. */
+  --background: #fff5e6;
+  --foreground: #282827;
+  --surface: #ffffff;
+  /* Light hairlines need more alpha than dark ones to read at the same weight. */
+  --border: color-mix(in srgb, var(--foreground) 12%, transparent);
+  /* Blue → 5.4:1 on the cream. The bright end of the same hue is only 2.3:1
+     there, so the accent is darkened for text the way the dark mode's orange
+     is; the bright value survives as the fill. */
+  --accent-primary: #47a4ff;
+  --accent-bright: #52a9ff;
+  --accent-fill: color-mix(in srgb, var(--accent-bright) 16%, transparent);
+  --accent-secondary: #8f5210; /* darkened orange → meta / focus only */
+  --backdrop: color-mix(in srgb, var(--background) 86%, transparent);
+  --panel-shadow: 0 24px 60px
+    color-mix(in srgb, var(--foreground) 16%, transparent);
+
+  --ink-secondary-opacity: 0.55;
+  --ink-secondary-opacity-hover: 0.8;
+  --page-gutter: 20px;
+  --row-height: 60px;
+  /* Two fixed values rather than a viewport-relative curve: the void is a
+     composition, not a percentage. 200px from 640px up, 100px below it — see
+     the override in `header/header-band.css`. */
+  --header-height: 200px;
+  /* The search field's box height. Both header children are floored to it so
+     the wordmark's baseline lines up with the controls' rather than with the
+     top of the field. */
+  --header-control-height: 32px;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Two durations, split by what moves rather than by speed. Anything that
+     recolours or fades takes the short one; anything that travels takes the
+     long one, so an element doing both — the row arrow, the wordmark link —
+     lands its colour before it finishes sliding. Every transition on the page
+     is one of these two; a third value means a new kind of motion, not a
+     tweak. */
+  --duration-tint: 220ms;
+  --duration-travel: 320ms;
+
+  color-scheme: light;
+}
+
+.dark {
+  /* DARK — the reference's native mode. */
+  --background: #282827;
+  --foreground: #f5f3f0; /* warm off-white, not #FFFFFF, to match the warm charcoal */
+  --surface: #32322f;
+  /* The reference's own hairline value, unchanged — pure white, not the warm
+     `--foreground`, so this one stays literal rather than deriving. */
+  --border: rgba(255, 255, 255, 0.08);
+  --accent-primary: #f7aa4c; /* 7.6:1 on #282827 */
+  /* Dark's orange is already the bright end — nothing to darken for text, so
+     primary and bright are the same value here. */
+  --accent-bright: #f7aa4c;
+  --accent-fill: color-mix(in srgb, var(--accent-bright) 7%, transparent);
+  --accent-secondary: #8fb0d0; /* blue, lightened */
+  --backdrop: color-mix(in srgb, var(--background) 86%, transparent);
+  /* Black, not `--foreground` inverted: the panel casts a real shadow, it does
+     not tint. Literal on purpose. */
+  --panel-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+
+  color-scheme: dark;
+}

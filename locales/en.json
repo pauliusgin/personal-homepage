@@ -1,0 +1,65 @@
+{
+  "metadata": {
+    "title": "Paulius Giniūnas",
+    "description": "Personal homepage of Paulius Giniūnas."
+  },
+  "wordmark": "paulius giniūnas",
+  "wordmarkShort": "giniūnas",
+  "comingSoon": "Coming soon™",
+  "nav": {
+    "search": "Search",
+    "searchHint": "⌘K",
+    "searchPlaceholder": "Search or jump to…",
+    "sections": "Sections",
+    "toggleTheme": "Toggle theme",
+    "toggleLanguage": "Switch to Lithuanian",
+    "backToHome": "Back to homepage"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "search": {
+    "dialogLabel": "Site search",
+    "empty": "No matches"
+  },
+  "footer": {
+    "placeholder": ""
+  },
+  "aboutPage": {
+    "paragraphs": [
+      "I'm a father of two and a former chef who transitioned into software development two years ago.",
+      "I like to keep my brain busy by picking up new skills, both professionally and personally. As a developer, there's always something new to explore — I'm currently learning Go and experimenting with AI-assisted workflows.",
+      "I also enjoy learning things that have nothing to do with code. Last year I learned to do a muscle-up and solve a Rubik's Cube. This year I'm learning to swim and have started practicing three-ball juggling. Next year I might start learning to ice skate.",
+      "When I'm not tinkering with something coding-related on my laptop or spending time with my family, you'll probably find me enjoying a quality anime or reading manga. I'm also rediscovering my passion for books, trying to strike a balance between technical books that help me grow as a developer and science fiction that lets me unwind."
+    ]
+  },
+  "sections": {
+    "about": {
+      "title": "About me",
+      "description": "Who am I?"
+    },
+    "portfolio": {
+      "title": "Portfolio",
+      "description": "Things I've built"
+    },
+    "news": {
+      "title": "News",
+      "description": "From curated sources"
+    },
+    "sisters": {
+      "title": "sisters.lt",
+      "description": "Children's art gallery"
+    },
+    "linkedin": {
+      "title": "LinkedIn"
+    },
+    "github": {
+      "title": "GitHub"
+    },
+    "email": {
+      "title": "Email",
+      "description": "Contact me"
+    }
+  }
+}

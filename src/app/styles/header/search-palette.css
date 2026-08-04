@@ -1,0 +1,144 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Search palette — the overlay `.search-trigger` opens
+
+   Filed under the header because the trigger is its only entry point, but it is
+   a fixed overlay: nothing here inherits from the band.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.search-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 12vh var(--page-gutter) var(--page-gutter);
+  background: var(--backdrop);
+}
+
+.search-panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 640px;
+  max-height: 70vh;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--panel-shadow);
+}
+
+/* The one field on the site that is not upper-cased: what you typed is what you
+   see, capitals included. `text-transform` would render "about" as "ABOUT" while
+   the value in state stayed "about", which makes the caret and any selection
+   land visibly off the glyphs they belong to. The placeholder below keeps the
+   caps — it is the trigger's label, not the user's text. */
+.search-input {
+  width: 100%;
+  padding: 20px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: 1em;
+}
+
+.search-input::placeholder {
+  color: inherit;
+  opacity: var(--ink-secondary-opacity);
+  text-transform: uppercase;
+}
+
+.search-input:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: -2px;
+}
+
+.search-results {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-y: auto;
+}
+
+/* Casing is set per slot below rather than on the row: each part of a result is
+   cased the way the page it came from renders it, so a result is recognisable as
+   the thing the user already saw. */
+.search-result {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: var(--row-height);
+  padding: 0 20px;
+  white-space: pre;
+  cursor: pointer;
+}
+
+.search-result::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--border);
+  pointer-events: none;
+}
+
+.search-result[aria-selected="true"] {
+  background: var(--accent-fill);
+}
+
+.search-result-label,
+.search-result-separator {
+  flex: none;
+}
+
+/* Label and descriptor are the same two strings the homepage rows show, so they
+   wear the same caps `.section-row-text` gives them — a result reading "About
+   me" under a row reading "ABOUT ME" reads as a different destination. */
+.search-result-label,
+.search-result-descriptor {
+  text-transform: uppercase;
+}
+
+.search-result-separator {
+  color: var(--accent-primary);
+  opacity: 0.9;
+}
+
+.search-result-descriptor {
+  opacity: var(--ink-secondary-opacity);
+}
+
+/* The excerpt is the one slot that is not a row label: it is lifted out of the
+   page body, which `.prose-paragraph` renders as written, so it stays as
+   written here too. Upper-casing a sentence fragment would also cost it the
+   capitals and full stops that show where the sentence starts and ends.
+
+   It is likewise the only place on the site that has to survive text longer
+   than its box: it takes the leftover width and clips, while the label it
+   follows never gives ground. */
+.search-result-excerpt {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: var(--ink-secondary-opacity);
+}
+
+.search-empty {
+  margin: 0;
+  padding: 20px;
+  opacity: var(--ink-secondary-opacity);
+  text-transform: uppercase;
+}
+
+/* Spec §5.1: the type never shrinks — the declared-secondary parts drop out
+   instead, same as the section rows. */
+@media (width < --theme(--breakpoint-sm)) {
+  .search-result-separator,
+  .search-result-descriptor,
+  .search-result-excerpt {
+    display: none;
+  }
+}

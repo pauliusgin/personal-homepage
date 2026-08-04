@@ -1,0 +1,63 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Header band — the void
+
+   Wordmark hard left, controls hard right, both on the same 20px gutter. The
+   shared `min-height` is what makes the two read as one line: without it the
+   wordmark's 16px of type sits against the top of the band while the search
+   field's 32px box pushes the controls 8px lower.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.header-band {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  height: var(--header-height);
+}
+
+.header-band > * {
+  min-height: calc(var(--header-control-height) + 2 * var(--page-gutter));
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Responsive — spec §5.1
+
+   The type never shrinks. Below 640px the two declared-secondary elements (the
+   `|` separator and the descriptor) drop out instead, which is what keeps a
+   16px terminal readout on a 320px screen.
+
+   320px is the narrowest supported width, and this is the last breakpoint —
+   there is deliberately nothing below it. A narrower viewport is left to scroll
+   sideways rather than being met with smaller type, tighter gaps or a further
+   round of hiding. Anything added here has to hold at 320px on its own.
+
+   The header stays one line all the way down, and it is the *same* line it is
+   at every other width: same 20px gutter, same 20px gaps, same 32px control
+   height. Only two things change, and only because they have to — the first
+   name goes (`wordmark.css`) and the search trigger drops to its glyph
+   (`header-controls.css`).
+
+   Measured at 16px Terminus (8px per character): "giniūnas" plus its cursor
+   and gutters is 114px (20 + 64 + 2 + 8 + 20), the cluster is 194px
+   (20 + 50 trigger + 20 + 48 theme word + 20 + 16 "EN" + 20) — 308px, so it
+   clears the 320px floor with 12px to spare. That budget is why nothing in this
+   directory may shrink: the spare is what pays for the gutters staying at 20.
+
+   The band's own 20px gap is the one exception, and it is not a visual
+   change — `space-between` means the gap only ever applies once the two
+   children touch, which on the supported range they never do. It is dropped
+   purely so the 12px above is not spent before it is needed.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (width < --theme(--breakpoint-sm)) {
+  /* The band's own token, overridden with the band. Imported after
+     `variables.css`, which is what lets this win. */
+  :root {
+    --header-height: 100px;
+  }
+
+  .header-band {
+    gap: 0;
+  }
+}

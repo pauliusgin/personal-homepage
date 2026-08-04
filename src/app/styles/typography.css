@@ -1,0 +1,51 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Document type foundation, plus the one place that departs from it.
+
+   The 16px on `body` is the load-bearing line.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-terminus), ui-monospace, SFMono-Regular, Menlo,
+    monospace;
+
+  /* Spec §0: one size for the whole page, no leading, monospace supplies the
+     tracking. Every rule below inherits these three.
+
+     16px is one of Terminus's native design sizes — the outlines are traced
+     pixels, so this number is load-bearing, not a preference. */
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1em;
+  letter-spacing: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Prose column — /about
+
+   The one place on the site that sets leading. Rows are single lines at the
+   body's 1em; a paragraph at 1em is a solid block, so prose runs at 1.6 and
+   nothing else inherits it.
+
+   The measure is set in `ch` because the face is monospace: 66ch is exactly 66
+   characters at any zoom level, which is the middle of the 45–75 readable
+   range. Left-aligned, not centred like the rows — a centred ragged block of
+   text has no left edge for the eye to return to.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.prose-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 66ch;
+  margin: 0 auto;
+  padding: 0 var(--page-gutter);
+}
+
+.prose-paragraph {
+  margin: 0;
+  line-height: 1.6;
+  text-wrap: pretty;
+}

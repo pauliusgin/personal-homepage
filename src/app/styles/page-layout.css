@@ -1,0 +1,71 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Page shell
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* 320px is the narrowest supported viewport (see the Responsive note in
+   `header/header-band.css`). The floor is enforced here rather than left to each
+   band: under it the page keeps its 320px layout at full size and scrolls
+   sideways, instead of the full-bleed rows quietly narrowing along with the
+   viewport while the header — which bottoms out at its own 308px min-content —
+   stays put. */
+.page-shell {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  width: 100%;
+  min-width: 320px;
+}
+
+/* Grows into whatever the two voids leave, so the footer band sits on the
+   bottom of a tall viewport and a short body (the /news and /portfolio
+   placeholders) has a middle to be centred in. */
+.page-main {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Coming-soon body — /news, /portfolio
+
+   A route that exists but has nothing in it yet. Fills the space between the
+   two voids and centres one line in it.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.coming-soon-band {
+  display: flex;
+  flex: 1 0 auto;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  padding: var(--page-gutter);
+}
+
+.coming-soon-text {
+  margin: 0;
+  font-weight: 700; /* same 400/700-only reason as `.wordmark` */
+  text-transform: uppercase;
+  opacity: var(--ink-secondary-opacity);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Footer band — the void, repeated, with content on its floor
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.footer-band {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  height: clamp(200px, 30vh, 400px);
+}
+
+.footer-text {
+  margin: 0;
+  padding: var(--page-gutter);
+  font-weight: 700; /* same 400/700-only reason as `.wordmark` */
+  text-transform: uppercase;
+  opacity: var(--ink-secondary-opacity);
+}

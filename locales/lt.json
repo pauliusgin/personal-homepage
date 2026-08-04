@@ -1,0 +1,65 @@
+{
+  "metadata": {
+    "title": "Paulius Giniūnas",
+    "description": "Asmeninis Pauliaus Giniūno tinklalapis."
+  },
+  "wordmark": "paulius giniūnas",
+  "wordmarkShort": "giniūnas",
+  "comingSoon": "Jau greitai™",
+  "nav": {
+    "search": "Ieškoti",
+    "searchHint": "⌘K",
+    "searchPlaceholder": "Ieškokite…",
+    "sections": "Skyriai",
+    "toggleTheme": "Keisti temą",
+    "toggleLanguage": "Perjungti į anglų kalbą",
+    "backToHome": "Grįžti į pradžios puslapį"
+  },
+  "theme": {
+    "light": "Šviesi",
+    "dark": "Tamsi"
+  },
+  "search": {
+    "dialogLabel": "Svetainės paieška",
+    "empty": "Nieko nerasta"
+  },
+  "footer": {
+    "placeholder": ""
+  },
+  "aboutPage": {
+    "paragraphs": [
+      "Esu dviejų vaikų tėvas ir buvęs virėjas, prieš dvejus metus pakeitęs profesiją į programuotojus.",
+      "Stengiuosi nuolat mokytis ko nors naujo, vis duoti smegenims darbo. Programavime visada yra ką išbandyti – šiuo metu mokausi Go ir eksperimentuoju, stengdamasis geriau išnaudoti AI įrankius.",
+      "Taip pat stengiuosi mokytis ir dalykų, neturinčių nieko bendro su programavimu. Praėjusiais metais išmokau padaryti muscle-up bei išspręsti Rubiko kubą. Dabar mokausi plaukti ir po truputį praktikuojuosi žongliruoti trimis kamuoliukais. Kitais metais tikiuosi pradėti mokytis čiuožti ant ledo.",
+      "Kai nesikuičiu kažką koduodamas savo nešiojamuoju kompiuteriu ar neleidžiu laiko su šeima, mėgstu pasinerti į kokybišką anime ar mangą. Taip pat vėl atrandu savo aistrą knygoms - bandau laviruoti tarp profesinėje srityje tobulėti padedančių techninių knygų ir mokslinės fantastikos, kurią skaitau savo malonumui."
+    ]
+  },
+  "sections": {
+    "about": {
+      "title": "Apie mane",
+      "description": "Kas aš?"
+    },
+    "portfolio": {
+      "title": "Portfolio",
+      "description": "Mano darbai"
+    },
+    "news": {
+      "title": "Naujienos",
+      "description": "Iš atrinktų šaltinių"
+    },
+    "sisters": {
+      "title": "sisters.lt",
+      "description": "Vaikiško meno galerija"
+    },
+    "linkedin": {
+      "title": "LinkedIn"
+    },
+    "github": {
+      "title": "GitHub"
+    },
+    "email": {
+      "title": "El. paštas",
+      "description": "Susisiekite"
+    }
+  }
+}
