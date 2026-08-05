@@ -51,11 +51,8 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 @media (width < --theme(--breakpoint-sm)) {
-  /* The band's own token, overridden with the band. Imported after
+  /* The band's own variable, overridden with the band. Imported after
      `variables.css`, which is what lets this win. */
-  :root {
-    --header-height: 100px;
-  }
 
   .header-band {
     gap: 0;
