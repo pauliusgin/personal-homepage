@@ -7,11 +7,8 @@ interface BuildLocalizedPageTitleParams {
 }
 
 /**
- * `<document title> = <section label> — <site name>`, both halves localized.
- *
- * Page titles reuse the section labels on purpose: the row a visitor clicked
- * and the tab they land on say the same word, and there is one place to change
- * it.
+ * `<section label> | <site name>`. Reusing the section label means the row a
+ * visitor clicked and the tab they land on say the same word.
  */
 export async function buildLocalizedPageTitle({
   locale,
@@ -22,5 +19,5 @@ export async function buildLocalizedPageTitle({
   const sectionLabel = translate(`sections.${sectionTranslationKey}.title`);
   const siteName = translate("metadata.title");
 
-  return `${sectionLabel} — ${siteName}`;
+  return `${sectionLabel} | ${siteName}`;
 }

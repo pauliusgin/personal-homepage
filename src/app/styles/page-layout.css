@@ -2,12 +2,9 @@
    Page shell
    ───────────────────────────────────────────────────────────────────────────── */
 
-/* 320px is the narrowest supported viewport (see the Responsive note in
-   `header/header-band.css`). The floor is enforced here rather than left to each
-   band: under it the page keeps its 320px layout at full size and scrolls
-   sideways, instead of the full-bleed rows quietly narrowing along with the
-   viewport while the header — which bottoms out at its own 308px min-content —
-   stays put. */
+/* 320px is the narrowest supported viewport (see `header/header-band.css`).
+   Under it the page keeps its 320px layout and scrolls sideways, rather than
+   the rows narrowing while the header holds at its 308px min-content. */
 .page-shell {
   display: flex;
   flex: 1 0 auto;
@@ -16,9 +13,8 @@
   min-width: 320px;
 }
 
-/* Grows into whatever the two voids leave, so the footer band sits on the
-   bottom of a tall viewport and a short body (the /news and /portfolio
-   placeholders) has a middle to be centred in. */
+/* Grows into whatever the two voids leave, so the footer sits on the bottom of
+   a tall viewport and a short body has a middle to be centred in. */
 .page-main {
   display: flex;
   flex: 1 0 auto;
@@ -27,10 +23,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   Coming-soon body — /news, /portfolio
-
-   A route that exists but has nothing in it yet. Fills the space between the
-   two voids and centres one line in it.
+   Coming-soon body — /portfolio
    ───────────────────────────────────────────────────────────────────────────── */
 
 .coming-soon-band {

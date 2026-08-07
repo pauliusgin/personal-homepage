@@ -8,33 +8,17 @@ import { LlamaGlyphIcon } from "@/components/icons/LlamaGlyphIcon";
 import { PersonGlyphIcon } from "@/components/icons/PersonGlyphIcon";
 
 /**
- * Every destination on the site lives in `siteSections` below — changing where
- * a row points is a one-line edit here and nothing else in the app needs to
- * know.
- */
-
-/**
- * Stand-in destination for a row whose real address has not been supplied yet.
- * Rows pointing at this are rendered but deliberately go nowhere — the search
- * palette also refuses to navigate to it rather than opening an empty tab.
- *
- * No row uses it today; a new one that has no address yet should point here and
- * carry a `TODO(real-url)` comment rather than invent a URL.
+ * Stand-in for a row whose real address is not known yet: it renders but goes
+ * nowhere, and the search palette refuses to navigate to it. Point a new row
+ * here rather than invent a URL.
  */
 export const PLACEHOLDER_HREF = "#";
 
-/**
- * How the row's anchor should behave. `internal` stays inside the app (and gets
- * the locale prefix), `external` opens a new tab, `mailto` hands off to the
- * operating system's default mail client.
- */
+/** `internal` gets the locale prefix; `external` opens a new tab. */
 export type SectionLinkKind = "internal" | "external" | "mailto";
 
 export interface SiteSectionDefinition {
-  /**
-   * Key under the `sections` namespace in `locales/*.json`. Doubles as the
-   * React key and as the search palette's option id.
-   */
+  /** Key under the `sections` namespace in `locales/*.json`; also the React key. */
   translationKey: string;
   href: string;
   linkKind: SectionLinkKind;
@@ -50,15 +34,13 @@ export const siteSections: SiteSectionDefinition[] = [
   },
   {
     translationKey: "portfolio",
-    // The route exists and is linkable; its body is still the "coming soon"
-    // placeholder — see src/components/ComingSoonNotice.tsx.
+    // Real route, placeholder body — see src/components/ComingSoonNotice.tsx.
     href: "/portfolio",
     linkKind: "internal",
     LeadingIcon: FolderGlyphIcon,
   },
   {
     translationKey: "news",
-    // Same as /portfolio: real route, placeholder body.
     href: "/news",
     linkKind: "internal",
     LeadingIcon: FoldedNewspaperGlyphIcon,

@@ -1,0 +1,557 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   News feed — /news
+
+   Follows `.prose-column`, not the homepage's full-bleed rows: an item is a
+   block, and a centred block has no left edge for the eye to return to.
+
+   72ch rather than the prose column's 66: still inside the 45–75 readable
+   band, but the meta line above carries four items and wraps at 66.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.news-feed-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 72ch;
+  margin: 0 auto;
+  padding: 0 var(--page-gutter);
+}
+
+/* Prose, so it takes `.prose-paragraph`'s leading. */
+.news-feed-intro {
+  margin: 0;
+  line-height: 1.6;
+  text-wrap: pretty;
+  opacity: var(--ink-secondary-opacity);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Filter controls
+
+   One row per group rather than one wrapping line, because the float a trigger
+   opens hangs under it and would cover anything sharing its line. Rows wrap
+   rather than scroll, keeping the type at 16px down to 320px.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Rows stretch so each decides its own alignment rather than inheriting one. */
+.news-filter-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.news-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Centred: the chips read as one line of words, not a group of controls. */
+.news-theme-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Held open whether or not the reset is there to fill it — a row that appeared
+   with the button would shove the feed down just as the reader looks at what
+   their filter did. */
+.news-filter-reset-row {
+  min-height: var(--header-control-height);
+}
+
+.news-filter-label {
+  text-transform: uppercase;
+  opacity: var(--ink-secondary-opacity);
+}
+
+/* A visible box because these carry state and a bare word cannot show whether
+   it is on. 12px against the chip row's 16 ranks the settings under the axis.
+   `font-size` has to follow the `font` shorthand, which resets it. */
+.news-filter-button {
+  display: inline-flex;
+  align-items: center;
+  height: var(--header-control-height);
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1em;
+  white-space: nowrap;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    color var(--duration-tint) var(--ease-out-expo),
+    border-color var(--duration-tint) var(--ease-out-expo),
+    background-color var(--duration-tint) var(--ease-out-expo);
+}
+
+.news-filter-button:hover:not(:disabled) {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.news-filter-button[aria-pressed="true"] {
+  border-color: var(--accent-primary);
+  background-color: var(--accent-fill);
+}
+
+.news-filter-button:disabled {
+  cursor: default;
+  opacity: var(--ink-secondary-opacity);
+}
+
+/* Quiet: the label is what the reader looks for, the value what they read after. */
+.news-filter-trigger-value {
+  margin-left: 8px;
+  opacity: var(--ink-secondary-opacity);
+}
+
+/* Turns over while the float is open, so the mark points at the panel. */
+.news-filter-trigger-chevron {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 6px;
+  opacity: var(--ink-secondary-opacity);
+  transition: transform var(--duration-tint) var(--ease-out-expo);
+}
+
+/* Keyed off the attribute, so a chip and a button turn over by one rule. */
+[aria-expanded="true"] .news-filter-trigger-chevron {
+  transform: rotate(180deg);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Theme chips
+
+   Typeset as a `.section-row` label line rather than boxes, so state is carried
+   by the words. `--accent-news-topic` rather than `--accent-primary`, which
+   swaps orange and blue between modes and would paint this axis blue in light
+   mode beside an orange topic tag on every item.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.news-theme-chip {
+  display: inline-flex;
+  align-items: center;
+  height: var(--header-control-height);
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: 1em;
+  white-space: nowrap;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color var(--duration-tint) var(--ease-out-expo);
+}
+
+.news-theme-chip:hover,
+.news-theme-chip:focus-visible {
+  color: var(--accent-news-topic);
+}
+
+/* The `.section-row-text` nudge. The travel is on this inner span, not the
+   button: a hit area that slid out from under the pointer would un-hover
+   itself and oscillate. */
+.news-theme-chip-text {
+  display: inline-flex;
+  align-items: center;
+  transform: translateX(0);
+  transition: transform var(--duration-travel) var(--ease-out-expo);
+}
+
+.news-theme-chip:hover .news-theme-chip-text,
+.news-theme-chip:focus-visible .news-theme-chip-text {
+  transform: translateX(6px);
+}
+
+.news-theme-chip[aria-pressed="true"] {
+  color: var(--accent-news-topic);
+}
+
+/* Punctuation between the words, not a fifth thing in the row. */
+.news-theme-chip-separator {
+  color: var(--accent-news-topic);
+  opacity: 0.9;
+  user-select: none;
+}
+
+/* Shown only for a partial selection — see `NewsThemeFilterChipRow`. */
+.news-theme-chip-count {
+  margin-left: 8px;
+  opacity: var(--ink-secondary-opacity);
+  color: var(--foreground);
+  font-size: 12px;
+}
+
+/* Left to wrap, the four words break 3 + 1 — a widow that reads as one theme
+   separated from the others. A three-column grid forces an even 2 × 2, and the
+   middle `|` drops out because it would end the first line with nothing after
+   it. */
+@media (width < 500px) {
+  .news-theme-chip-row {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+  }
+
+  .news-theme-chip-separator:nth-of-type(2) {
+    display: none;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Floats — sources, date range, article count
+
+   Over the feed rather than pushing it down: a panel that displaced the items
+   would move the answer out of view every time the reader changed the question.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.news-filter-anchor {
+  position: relative;
+}
+
+.news-filter-float {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 20;
+  /* Sized by its contents, not by the trigger, and capped against the viewport
+     so the widest source name cannot push the panel off a 320px screen. */
+  width: max-content;
+  min-width: 200px;
+  max-width: min(320px, calc(100vw - 2 * var(--page-gutter)));
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--panel-shadow);
+}
+
+/* The one native form control on the site. `font: inherit` keeps the typed
+   value at 16px Terminus; the picker panel is the browser's and follows the
+   theme because `variables.css` declares `color-scheme` per mode. */
+.news-filter-date-input {
+  height: var(--header-control-height);
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: 1em;
+  transition: border-color var(--duration-tint) var(--ease-out-expo);
+}
+
+.news-filter-date-input:hover {
+  border-color: var(--accent-primary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Float contents — one theme's sources, the two date bounds, the three counts
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.news-source-panel,
+.news-date-panel,
+.news-article-count-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.news-source-panel-heading {
+  margin: 0;
+  text-transform: uppercase;
+  opacity: var(--ink-secondary-opacity);
+}
+
+/* 24px floor on a 16px line: WCAG 2.5.8 Target Size, Minimum. The whole label
+   is the target. */
+.news-source-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 24px;
+  cursor: pointer;
+}
+
+/* Separated from the rows it governs, or it reads as a source called "All". */
+.news-source-option-all {
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  text-transform: uppercase;
+}
+
+.news-source-checkbox {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--accent-news-topic);
+}
+
+.news-article-count-option {
+  display: flex;
+  align-items: center;
+  height: var(--header-control-height);
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: 1em;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    color var(--duration-tint) var(--ease-out-expo),
+    border-color var(--duration-tint) var(--ease-out-expo),
+    background-color var(--duration-tint) var(--ease-out-expo);
+}
+
+.news-article-count-option:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.news-article-count-option[aria-checked="true"] {
+  border-color: var(--accent-primary);
+  background-color: var(--accent-fill);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   The feed itself
+
+   Items are a stack, not rows: `--row-height` is a one-line measurement and an
+   item is four lines. The gap does the separating — the site has no divider
+   except in the ⌘K result list. Attribution leads because it is what a reader
+   filters on by eye.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.news-feed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: opacity var(--duration-tint) var(--ease-out-expo);
+}
+
+/* Refreshing dims the batch instead of replacing it — a cold request fans out
+   to twenty feeds with a 10s per-feed timeout. */
+.news-feed-list[data-refreshing="true"] {
+  opacity: var(--ink-secondary-opacity-hover);
+}
+
+.news-feed-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Lifted from someone else's feed, so rendered as written — upper-casing a
+   sentence costs it the capitals that show where it starts. Wraps, so it takes
+   prose leading rather than the body's 1em. */
+.news-item-title {
+  margin: 0;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.news-item-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--duration-tint) var(--ease-out-expo);
+}
+
+.news-item-link:hover {
+  color: var(--accent-primary);
+}
+
+/* Inline rather than pinned to a column: the title wraps, so an edge-pinned
+   arrow would float away from the last line it belongs to. */
+.news-item-arrow {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  margin-left: 4px;
+  vertical-align: middle;
+  color: var(--accent-primary);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition:
+    transform var(--duration-travel) var(--ease-out-expo),
+    opacity var(--duration-tint) var(--ease-out-expo);
+}
+
+.news-item-link:hover .news-item-arrow,
+.news-item-link:focus-visible .news-item-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.news-item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.news-item-theme-tag,
+.news-item-source-tag,
+.news-item-new-tag,
+.news-item-seen-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 6px;
+  white-space: nowrap;
+  transition: background-color var(--duration-tint) var(--ease-out-expo);
+}
+
+/* Topic is orange and source blue in both modes, which `--accent-primary`
+   cannot carry — it swaps the two hues between themes on purpose. */
+.news-item-theme-tag {
+  color: var(--accent-news-topic);
+  background-color: var(--accent-news-topic-fill);
+  text-transform: uppercase;
+}
+
+/* Not upper-cased: "BLEEPINGCOMPUTER" is not what anyone calls it. */
+.news-item-source-tag {
+  color: var(--accent-news-source);
+  background-color: var(--accent-news-source-fill);
+}
+
+/* Read-state, not an axis: no box and no fill, and 12px against the row's 16
+   so it does not compete with the source and topic tags. The literal `#f7aa4c`
+   rather than a token — the design fixes this hue in both modes. */
+.news-item-new-tag {
+  padding: 0;
+  border: none;
+  color: var(--accent-news-topic);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+/* Same 12px as `NEW` — the two are one pair. Dim ink and no hue, because
+   "seen" is the state the reader is done with. */
+.news-item-seen-tag {
+  font-size: 12px;
+  text-transform: uppercase;
+  opacity: var(--ink-secondary-opacity);
+}
+
+/* Its own line rather than a fourth chip on the meta row: it carries two facts
+   a wrapping meta row would break apart. */
+.news-item-published-at {
+  margin: 0;
+  opacity: var(--ink-secondary-opacity);
+}
+
+/* Nothing keys off `data-seen`; the "SEEN" word carries the state on its own.
+   Dimming the row is not an option — opacity on the container multiplies into
+   the two coloured tags and drops them from ~5.5:1 to below 3:1. The attribute
+   is still written as the seam a future treatment would hang off. */
+
+/* Clamped to two lines: feed descriptions run past 200 characters. */
+.news-item-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin: 0;
+  line-height: 1.6;
+  opacity: var(--ink-secondary-opacity);
+}
+
+/* Same destination as the headline, deliberately not the same hover: two
+   blocks lighting up together would read as two links to two places. */
+.news-item-description-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Status, error and partial-failure states
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.news-feed-status {
+  margin: 0;
+  text-transform: uppercase;
+  opacity: var(--ink-secondary-opacity);
+}
+
+.news-feed-error {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.news-feed-error-heading {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.news-feed-error-detail {
+  margin: 0;
+  line-height: 1.6;
+  opacity: var(--ink-secondary-opacity);
+}
+
+/* A note beside the items, never instead of them — one unreachable feed is
+   routine and the rest still answered. */
+.news-failure-notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+}
+
+.news-failure-text {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  line-height: 1.6;
+  opacity: var(--ink-secondary-opacity);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Focus
+
+   `--accent-secondary`, never a signal hue: an orange focus ring beside an
+   orange topic tag would read as the tag being focused.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.news-filter-button:focus-visible,
+.news-filter-date-input:focus-visible,
+.news-theme-chip:focus-visible,
+.news-source-checkbox:focus-visible,
+.news-article-count-option:focus-visible,
+.news-item-link:focus-visible,
+.news-item-description-link:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: 3px;
+}
+
+/* Spec §5.1: the type never shrinks, the declared-secondary element drops out.
+   The description is the only genuinely optional part of an item. */
+@media (width < --theme(--breakpoint-sm)) {
+  .news-item-description {
+    display: none;
+  }
+}

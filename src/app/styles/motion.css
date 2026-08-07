@@ -1,13 +1,9 @@
 /* ─────────────────────────────────────────────────────────────────────────────
    Reduced motion
 
-   Collapsing the two duration tokens catches every transition on the site at
-   once, because every transition is written against one of them — no
-   hand-maintained list of selectors to keep in sync.
-
-   The one rule: a transition must take its duration from `--duration-tint` or
-   `--duration-travel`. A literal `ms` value anywhere escapes this block, and
-   nothing will flag it.
+   Collapsing the two duration tokens catches every transition at once, which
+   depends on every transition taking its duration from `--duration-tint` or
+   `--duration-travel`. A literal `ms` value escapes this block unflagged.
    ───────────────────────────────────────────────────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {

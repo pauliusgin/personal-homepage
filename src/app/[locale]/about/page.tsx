@@ -17,7 +17,6 @@ export async function generateMetadata({
   };
 }
 
-/** /about: the bio, in the shared shell. */
 export default async function AboutPage({
   params,
 }: PageProps<"/[locale]/about">) {

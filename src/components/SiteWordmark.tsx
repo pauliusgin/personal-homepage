@@ -8,17 +8,9 @@ interface SiteWordmarkProps {
 }
 
 /**
- * The identity mark, pinned to the header's left gutter. The trailing `|` is
- * the brand mark — orange here and orange again as the separator on every row,
- * which is what turns the list into a vertical spine of accent marks.
- *
- * The name is inert type, not a link: the way home is the ← that follows the
- * `|` on every page but the homepage (see BackToHomeArrowLink), so there is one
- * visible, unambiguous target rather than a word that is silently clickable.
- *
- * Both faces of the name sit in the markup and CSS picks one: the full name
- * above 640px, the surname alone below it, where the wordmark and the controls
- * have to share a single line.
+ * The name is inert type, not a link — the way home is the ← after the `|`, so
+ * there is one visible target rather than a silently clickable word. Both faces
+ * sit in the markup and CSS picks one at the 640px breakpoint.
  */
 export function SiteWordmark({
   wordmarkText,

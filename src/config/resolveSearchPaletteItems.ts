@@ -5,12 +5,7 @@ import { sitePageContentMessageKeys } from "@/config/sitePageContent";
 
 type RootTranslator = Awaited<ReturnType<typeof getTranslations>>;
 
-/**
- * `raw` is the documented next-intl escape hatch for non-string messages and is
- * typed `any`, so every shape it can return is narrowed here rather than
- * trusted. A page body is one string or an array of them; anything else is a
- * catalogue mistake and contributes no searchable text.
- */
+/** next-intl's `raw` is typed `any`, so its return is narrowed rather than trusted. */
 function flattenMessageValueToPassages(messageValue: unknown): string[] {
   if (typeof messageValue === "string") {
     return [messageValue];
@@ -38,8 +33,8 @@ function resolvePageContentPassages({
   }
 
   return messageKeys.flatMap((messageKey) => {
-    // A key the active locale has not translated yet drops out instead of
-    // throwing — a missing paragraph should cost search recall, not the header.
+    // An untranslated key drops out instead of throwing — a missing paragraph
+    // should cost search recall, not the header.
     if (!translateRoot.has(messageKey)) {
       return [];
     }
@@ -47,13 +42,6 @@ function resolvePageContentPassages({
   });
 }
 
-/**
- * Builds the palette's index: every section row, plus the localized body copy of
- * the page behind it.
- *
- * Lives beside `resolveSiteSectionRows` because it is the same join one layer
- * further — configuration to content — and keeps the page shell free of it.
- */
 export async function resolveSearchPaletteItems(): Promise<
   SearchPaletteItem[]
 > {

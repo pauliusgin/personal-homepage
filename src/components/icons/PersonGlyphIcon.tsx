@@ -1,6 +1,5 @@
 import { glyphIconSvgProps } from "./glyphIconGeometry";
 
-/** Leading glyph for the "about" row. */
 export function PersonGlyphIcon() {
   return (
     <svg {...glyphIconSvgProps}>

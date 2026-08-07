@@ -9,12 +9,6 @@ interface SitePageShellProps {
   children: ReactNode;
 }
 
-/**
- * The frame every page shares: the header void with wordmark and controls, the
- * page's own body, and the footer void. Only the body changes
- * between the homepage, /about and the placeholder routes — the search palette
- * is fed the same index everywhere, so ⌘K works off the homepage too.
- */
 export async function SitePageShell({ children }: SitePageShellProps) {
   const [translateRoot, searchItems] = await Promise.all([
     getTranslations(),

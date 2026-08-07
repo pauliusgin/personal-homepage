@@ -1,10 +1,8 @@
 /* ─────────────────────────────────────────────────────────────────────────────
    Section rows
 
-   Each row is a three-column grid: the content group sits in the centred
-   column 2, the trailing ↗ always pinned to column 3. Column 1 is empty and
-   exists only to keep column 2 centred against it. The rows themselves stay
-   full-bleed.
+   Each row is a three-column grid: content in the centred column 2, the
+   trailing ↗ pinned to column 3. Column 1 is empty and only balances column 3.
    ───────────────────────────────────────────────────────────────────────────── */
 
 .section-list {
@@ -64,8 +62,8 @@
   transition: transform var(--duration-travel) var(--ease-out-expo);
 }
 
-/* Spec §0.2: the label only reads as bolder than the descriptor because of the
-   opacity ladder. Same family, same size, same weight. */
+/* Spec §0.2: the label reads as bolder than the descriptor only because of the
+   opacity ladder — same family, size and weight. */
 .section-row-separator {
   color: var(--accent-primary);
   opacity: 0.9;
@@ -114,9 +112,8 @@
   outline-offset: -2px;
 }
 
-/* Spec §5.1: the type never shrinks. Below 640px the two declared-secondary
-   elements (the `|` separator and the descriptor) drop out instead, which is
-   what keeps a 16px terminal readout on a 320px screen. */
+/* Spec §5.1: the type never shrinks — declared-secondary elements drop out
+   instead, which keeps a 16px readout on a 320px screen. */
 @media (width < --theme(--breakpoint-sm)) {
   .section-row-separator,
   .section-row-descriptor {

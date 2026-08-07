@@ -34,6 +34,37 @@
       "When I'm not tinkering with something coding-related on my laptop or spending time with my family, you'll probably find me enjoying a quality anime or reading manga. I'm also rediscovering my passion for books, trying to strike a balance between technical books that help me grow as a developer and science fiction that lets me unwind."
     ]
   },
+  "newsPage": {
+    "feedLabel": "News feed",
+    "filtersLabel": "Feed filters",
+    "loading": "Loading the feed…",
+    "refreshing": "Refreshing…",
+    "themeFilterLabel": "Theme",
+    "themeGeneralNews": "General",
+    "themeSoftwareDevelopment": "Software",
+    "themeCybersecurity": "Infosec",
+    "themeFinance": "Finance",
+    "sourceFilterLabel": "Sources",
+    "sourceFilterAll": "All",
+    "sourceFilterCount": "{count} selected",
+    "limitFilterLabel": "Show articles",
+    "limitOption": "{limit} articles",
+    "dateFilterLabel": "Date",
+    "sinceLabel": "From",
+    "untilLabel": "Until",
+    "reset": "Clear filters",
+    "refresh": "Refresh",
+    "markAllSeen": "Mark all as seen",
+    "newTag": "New",
+    "seenTag": "Seen",
+    "dateUnknown": "Date unknown",
+    "emptyFiltered": "Nothing matched these filters.",
+    "emptyFeed": "The feed came back empty.",
+    "errorHeading": "The feed could not be loaded.",
+    "retry": "Try again",
+    "partialFailure": "Some sources did not answer: {sources}",
+    "dismiss": "Dismiss"
+  },
   "sections": {
     "about": {
       "title": "About me",

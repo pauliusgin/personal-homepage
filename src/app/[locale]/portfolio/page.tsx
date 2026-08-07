@@ -17,7 +17,6 @@ export async function generateMetadata({
   };
 }
 
-/** /portfolio: the project list, not built yet — placeholder body for now. */
 export default async function PortfolioPage({
   params,
 }: PageProps<"/[locale]/portfolio">) {

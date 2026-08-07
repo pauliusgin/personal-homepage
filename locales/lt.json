@@ -34,6 +34,37 @@
       "Kai nesikuičiu kažką koduodamas savo nešiojamuoju kompiuteriu ar neleidžiu laiko su šeima, mėgstu pasinerti į kokybišką anime ar mangą. Taip pat vėl atrandu savo aistrą knygoms - bandau laviruoti tarp profesinėje srityje tobulėti padedančių techninių knygų ir mokslinės fantastikos, kurią skaitau savo malonumui."
     ]
   },
+  "newsPage": {
+    "feedLabel": "Naujienų srautas",
+    "filtersLabel": "Srauto filtrai",
+    "loading": "Kraunamas srautas…",
+    "refreshing": "Atnaujinama…",
+    "themeFilterLabel": "Tema",
+    "themeGeneralNews": "Naujienos",
+    "themeSoftwareDevelopment": "Programavimas",
+    "themeCybersecurity": "Infosec",
+    "themeFinance": "Finansai",
+    "sourceFilterLabel": "Šaltiniai",
+    "sourceFilterAll": "Visi",
+    "sourceFilterCount": "pasirinkta {count}",
+    "limitFilterLabel": "Rodyti straipsnius",
+    "limitOption": "{limit} straipsnių",
+    "dateFilterLabel": "Data",
+    "sinceLabel": "Nuo",
+    "untilLabel": "Iki",
+    "reset": "Išvalyti filtrus",
+    "refresh": "Atnaujinti",
+    "markAllSeen": "Žymėti visus kaip matytus",
+    "newTag": "Nauja",
+    "seenTag": "Matyta",
+    "dateUnknown": "Data nežinoma",
+    "emptyFiltered": "Pagal šiuos filtrus nieko nerasta.",
+    "emptyFeed": "Srautas tuščias.",
+    "errorHeading": "Nepavyko įkelti srauto.",
+    "retry": "Bandyti dar kartą",
+    "partialFailure": "Kai kurie šaltiniai neatsakė: {sources}",
+    "dismiss": "Uždaryti"
+  },
   "sections": {
     "about": {
       "title": "Apie mane",

@@ -27,11 +27,9 @@
   box-shadow: var(--panel-shadow);
 }
 
-/* The one field on the site that is not upper-cased: what you typed is what you
-   see, capitals included. `text-transform` would render "about" as "ABOUT" while
-   the value in state stayed "about", which makes the caret and any selection
-   land visibly off the glyphs they belong to. The placeholder below keeps the
-   caps — it is the trigger's label, not the user's text. */
+/* The one field on the site that is not upper-cased: `text-transform` would
+   render "about" as "ABOUT" while state stayed "about", landing the caret and
+   any selection visibly off the glyphs. */
 .search-input {
   width: 100%;
   padding: 20px;
@@ -61,9 +59,6 @@
   overflow-y: auto;
 }
 
-/* Casing is set per slot below rather than on the row: each part of a result is
-   cased the way the page it came from renders it, so a result is recognisable as
-   the thing the user already saw. */
 .search-result {
   position: relative;
   display: flex;
@@ -93,9 +88,8 @@
   flex: none;
 }
 
-/* Label and descriptor are the same two strings the homepage rows show, so they
-   wear the same caps `.section-row-text` gives them — a result reading "About
-   me" under a row reading "ABOUT ME" reads as a different destination. */
+/* The same two strings the homepage rows show, so they wear the same caps —
+   "About me" under a row reading "ABOUT ME" reads as another destination. */
 .search-result-label,
 .search-result-descriptor {
   text-transform: uppercase;
@@ -110,14 +104,9 @@
   opacity: var(--ink-secondary-opacity);
 }
 
-/* The excerpt is the one slot that is not a row label: it is lifted out of the
-   page body, which `.prose-paragraph` renders as written, so it stays as
-   written here too. Upper-casing a sentence fragment would also cost it the
-   capitals and full stops that show where the sentence starts and ends.
-
-   It is likewise the only place on the site that has to survive text longer
-   than its box: it takes the leftover width and clips, while the label it
-   follows never gives ground. */
+/* Lifted out of the page body, so rendered as written. The only slot that has
+   to survive text longer than its box, so it takes the leftover width and clips
+   while the label never gives ground. */
 .search-result-excerpt {
   flex: 1;
   min-width: 0;
@@ -133,8 +122,7 @@
   text-transform: uppercase;
 }
 
-/* Spec §5.1: the type never shrinks — the declared-secondary parts drop out
-   instead, same as the section rows. */
+/* Spec §5.1: the type never shrinks — declared-secondary parts drop out. */
 @media (width < --theme(--breakpoint-sm)) {
   .search-result-separator,
   .search-result-descriptor,

@@ -1,6 +1,5 @@
 import { glyphIconSvgProps } from "./glyphIconGeometry";
 
-/** Leading glyph for the "github" row. */
 export function CodeBracketsGlyphIcon() {
   return (
     <svg {...glyphIconSvgProps}>

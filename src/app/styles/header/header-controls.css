@@ -12,12 +12,9 @@
   padding: var(--page-gutter);
 }
 
-/* The 4px of padding paired with -4px of margin grows the hit box from the
-   16px line height to 24px (WCAG 2.5.8 Target Size, Minimum) while the
-   margin-box — and therefore every visible edge and gap — stays exactly where
-   it was. The horizontal pair matters for the locale toggle specifically: "EN"
-   is only ~16px wide, so it misses the minimum on both axes, not just height.
-   Any change to one number must change the other. */
+/* 4px of padding against -4px of margin grows the hit box to 24px (WCAG 2.5.8
+   Target Size, Minimum) while every visible edge stays put. Both axes matter:
+   "EN" is only ~16px wide. Any change to one number must change the other. */
 .control-button {
   display: inline-flex;
   align-items: center;
@@ -51,10 +48,7 @@
   text-align: right;
 }
 
-/* Dressed as a text field — hairline box, muted label sitting where a
-   placeholder would, shortcut hint on the right rail — but it is a button that
-   opens the palette. `cursor: text` sells the field; the hairline is the same
-   token every other rule on the page borrows. */
+/* A button dressed as a text field; `cursor: text` sells the field. */
 .search-trigger {
   display: inline-flex;
   align-items: center;
@@ -74,9 +68,7 @@
   transition: border-color var(--duration-tint) var(--ease-out-expo);
 }
 
-/* Leads the trigger at every width — it is what makes the box read as a search
-   field rather than a bordered word. Below 640px it is the whole trigger, the
-   label and hint having dropped out. */
+/* Below 640px this is the whole trigger, label and hint having dropped out. */
 .search-trigger-icon {
   display: inline-flex;
   flex: none;
@@ -88,9 +80,8 @@
   transition: color var(--duration-tint) var(--ease-out-expo);
 }
 
-/* Hover moves the hairline and the glyph only. The label and hint are
-   placeholder text — tinting them reads as the field having a value, so they
-   hold their muted ink through the whole interaction. */
+/* Hover moves the hairline and glyph only: the label and hint are placeholder
+   text, and tinting them would read as the field having a value. */
 .search-trigger:hover {
   border-color: var(--accent-primary);
 }
@@ -104,22 +95,15 @@
   opacity: var(--ink-secondary-opacity);
 }
 
-/* Glyph and label are one group on the left rail; only the hint is pushed to
-   the far side. `space-between` would instead spread all three evenly and float
-   the glyph away from the word it labels. */
+/* Only the hint is pushed to the far side — `space-between` would float the
+   glyph away from the word it labels. */
 .search-trigger-hint {
   margin-left: auto;
 }
 
-/* Spec §2.4: focus takes `--accent-secondary` precisely so it cannot be
-   confused with the `--accent-primary` hover. The two tokens swap hue between
-   themes (blue/orange in dark, orange/blue in light — see `variables.css`), so
-   the pairing is what carries the distinction, not either colour by itself.
-
-   One rule for all three interactive elements in the header —
-   `.wordmark-back-link` included, even though it is styled in `wordmark.css`.
-   The ring is a single decision and splitting it would invite the two halves to
-   drift apart. */
+/* Spec §2.4: focus takes `--accent-secondary` so it cannot be confused with
+   the `--accent-primary` hover. The two swap hue between themes, so the pairing
+   carries the distinction, not either colour by itself. */
 .control-button:focus-visible,
 .search-trigger:focus-visible,
 .wordmark-back-link:focus-visible {
@@ -127,11 +111,8 @@
   outline-offset: 3px;
 }
 
-/* The other of the two things the header is allowed to change below 640px — see
-   the width budget in `header-band.css`.
-
-   Width and alignment only — the 32px height and 10px padding are the same box
-   as above, so the trigger keeps its place in the line. */
+/* One of the two things the header may change below 640px — see the width
+   budget in `header-band.css`. Width and alignment only. */
 @media (width < --theme(--breakpoint-sm)) {
   .search-trigger {
     justify-content: center;

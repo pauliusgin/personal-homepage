@@ -1,10 +1,5 @@
 import { glyphIconSvgProps } from "./glyphIconGeometry";
 
-/**
- * The search trigger's glyph. Leads the trigger at every width, and below 640px
- * it is the whole trigger — see `.search-trigger-icon` in
- * `app/styles/header/header-controls.css`.
- */
 export function MagnifierGlyphIcon() {
   return (
     <svg {...glyphIconSvgProps}>

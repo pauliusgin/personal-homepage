@@ -1,15 +1,9 @@
 import { glyphIconSvgProps } from "./glyphIconGeometry";
 
 /**
- * Leading glyph for the "sisters.lt" row — the llama from the gallery's own
- * painting, redrawn as a head-and-neck bust facing left: wedge muzzle, the two
- * upright ears, and three shallow tufts of fleece down the back of the neck —
- * shallow because deeper scallops bend the neck into an S at glyph size.
- *
- * One closed contour plus the eye, so the whole animal is a single 1px line at
- * the 20px box. Detail below ~4 grid units disappears there — the ears, the
- * muzzle wedge and the tufts are sized to survive it, and everything else the
- * painting has (fleece texture, the face patch) is deliberately left out.
+ * Detail below ~4 grid units disappears at the 20px box, so ears, muzzle wedge
+ * and neck tufts are sized to survive it. The tufts stay shallow because deeper
+ * scallops bend the neck into an S at glyph size.
  */
 export function LlamaGlyphIcon() {
   return (

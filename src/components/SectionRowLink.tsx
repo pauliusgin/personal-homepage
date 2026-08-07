@@ -9,15 +9,12 @@ import { ExternalArrowIcon } from "@/components/icons/ExternalArrowIcon";
 interface SectionRowLinkProps {
   section: SiteSectionDefinition;
   label: string;
-  /** Absent for rows that are only a label — see `sections` in `locales/*.json`. */
   descriptor?: string;
 }
 
 /**
- * One full-bleed 60px row of the list: leading glyph, label, orange `|`
- * separator, descriptor, and — for anything that leaves the site — a trailing ↗
- * that reveals on hover. A row without a descriptor drops the separator with
- * it; a dangling `|` would read as a cursor rather than as punctuation.
+ * A row without a descriptor drops the `|` separator with it — a dangling `|`
+ * reads as a cursor rather than as punctuation.
  */
 export function SectionRowLink({
   section,
@@ -59,7 +56,7 @@ export function SectionRowLink({
   const rowClassName = "section-row";
 
   // Real internal routes go through the next-intl wrapper so they keep the
-  // locale prefix. Placeholders are plain anchors — see src/config/siteSections.ts.
+  // locale prefix; placeholders are plain anchors.
   const isRoutableInternalLink =
     section.linkKind === "internal" && section.href !== PLACEHOLDER_HREF;
 

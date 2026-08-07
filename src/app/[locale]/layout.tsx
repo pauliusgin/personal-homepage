@@ -7,17 +7,13 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
-// The design is 100% monospace (design spec §0.1, §1) — Terminus (TTF) is the
-// page font, self-hosted by `next/font` so there is no webfont flash on a page
-// where every pixel of content is text. Terminus is a bitmap font traced to
-// outlines: it ships only two weights (400 / 700, no italic in use here) and it
-// is designed for exact pixel sizes, of which the page's 16px is one. Do not
-// scale the type off that size — anything in between resamples the pixel grid
-// and the whole point of the face is lost.
+// Terminus is a bitmap face traced to outlines, designed for exact pixel sizes
+// — the page's 16px is one of them. Do not scale the type off that size:
+// anything in between resamples the pixel grid and the face falls apart.
 //
 // The .woff2 files are subsets of the upstream 4.49.3 TTFs (latin, latin-ext,
-// punctuation, arrows) — 500KB each down to ~8KB. See LICENSE-Terminus-OFL.txt
-// in the same folder; regenerate with `pyftsubset` if a glyph turns up missing.
+// punctuation, arrows). Regenerate with `pyftsubset` if a glyph turns up
+// missing; see LICENSE-Terminus-OFL.txt in the same folder.
 const terminus = localFont({
   src: [
     {
@@ -63,8 +59,8 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  // Required for static rendering: opts this segment out of dynamic rendering
-  // and must run before any other next-intl call in the tree.
+  // Required for static rendering, and must run before any other next-intl
+  // call in the tree.
   setRequestLocale(locale);
 
   return (

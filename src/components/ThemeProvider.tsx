@@ -3,10 +3,7 @@
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import type { ThemeProviderProps } from "next-themes";
 
-/**
- * Wraps next-themes so the App Router server layout can stay a server
- * component. Defaults live here rather than at the call site.
- */
+/** Wraps next-themes so the App Router layout can stay a server component. */
 export function ThemeProvider({
   children,
   ...forwardedProps

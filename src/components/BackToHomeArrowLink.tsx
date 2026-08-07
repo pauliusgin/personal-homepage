@@ -8,14 +8,9 @@ interface BackToHomeArrowLinkProps {
 }
 
 /**
- * The ← that sits right of the wordmark's `|` on every page except the
- * homepage, and is the only way back to it — the wordmark itself is not a link.
- *
- * The current route decides whether it renders, rather than a prop each page
- * has to remember to pass: a new route added under `[locale]` gets the arrow
- * for free and cannot be shipped without one. `usePathname` here is next-intl's
- * — it returns the path with the locale prefix already stripped, so the
- * homepage is `/` in both locales.
+ * The route decides whether this renders, rather than a prop each page must
+ * remember. next-intl's `usePathname` strips the locale prefix, so the homepage
+ * is `/` in both locales.
  */
 export function BackToHomeArrowLink({
   backToHomeLabel,

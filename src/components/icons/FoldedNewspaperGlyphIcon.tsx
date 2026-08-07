@@ -1,16 +1,9 @@
 import { glyphIconSvgProps } from "./glyphIconGeometry";
 
 /**
- * Leading glyph for the "news" row: a folded newspaper seen in perspective —
- * the page as a parallelogram, its far edge curling under, its near edge rolled
- * into a tube.
- *
- * The parallelogram is the load-bearing part: opposite corners sum to the same
- * point ((4,8.6)+(20.6,9) = (12,3.4)+(12.6,14.2)), which is what keeps it
- * reading as one flat plane rather than a dented quad. The three column rules
- * run along the plane's long axis on a 4.2,-2.6 delta, near enough parallel to
- * the top edge's 8,-5.2 to read as ruled columns; a fourth would close the gaps
- * up into a hatch at the 20px box.
+ * Opposite corners of the page must keep summing to the same point
+ * ((4,8.6)+(20.6,9) = (12,3.4)+(12.6,14.2)) or it stops reading as one flat
+ * plane. Three column rules, not four — a fourth closes into a hatch at 20px.
  */
 export function FoldedNewspaperGlyphIcon() {
   return (

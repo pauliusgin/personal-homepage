@@ -1,9 +1,7 @@
 /**
- * The trailing ↗ mark that reveals on hover for links that leave the site.
- *
- * Geometry is transcribed verbatim from the reference (design spec §3 "Icons"),
- * including the mitre join — it does not use the shared `glyphIconSvgProps`
- * because the reference draws this one with square terminals.
+ * Transcribed verbatim from the reference (design spec §3 "Icons"), mitre join
+ * included; it skips `glyphIconSvgProps` because the reference draws this one
+ * with square terminals.
  */
 export function ExternalArrowIcon() {
   return (

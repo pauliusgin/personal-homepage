@@ -1,6 +1,5 @@
 import { glyphIconSvgProps } from "./glyphIconGeometry";
 
-/** Leading glyph for the "email" row. */
 export function EnvelopeGlyphIcon() {
   return (
     <svg {...glyphIconSvgProps}>

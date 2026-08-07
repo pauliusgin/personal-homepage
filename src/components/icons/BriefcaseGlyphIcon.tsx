@@ -1,6 +1,5 @@
 import { glyphIconSvgProps } from "./glyphIconGeometry";
 
-/** Leading glyph for the "linkedin" row. */
 export function BriefcaseGlyphIcon() {
   return (
     <svg {...glyphIconSvgProps}>

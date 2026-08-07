@@ -1,6 +1,5 @@
 import { glyphIconSvgProps } from "./glyphIconGeometry";
 
-/** Leading glyph for the "portfolio" row. */
 export function FolderGlyphIcon() {
   return (
     <svg {...glyphIconSvgProps}>

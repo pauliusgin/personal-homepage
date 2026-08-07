@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
-import { ComingSoonNotice } from "@/components/ComingSoonNotice";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Suspense } from "react";
+import { NewsFeedPanel } from "@/components/NewsFeedPanel";
+import { NewsFeedStatusLine } from "@/components/NewsFeedStatusLine";
 import { SitePageShell } from "@/components/SitePageShell";
 import { buildLocalizedPageTitle } from "@/i18n/buildLocalizedPageTitle";
 
@@ -17,16 +19,30 @@ export async function generateMetadata({
   };
 }
 
-/** /news: the curated feed, not built yet — placeholder body for now. */
+/**
+ * Reads nothing request-scoped, so both locales stay prerendered. The
+ * `<Suspense>` boundary keeps `NewsFeedPanel`'s query-string read from dragging
+ * the shell above it out of static rendering.
+ */
 export default async function NewsPage({
   params,
 }: PageProps<"/[locale]/news">) {
   const { locale } = await params;
   setRequestLocale(locale);
 
+  const translateNews = await getTranslations("newsPage");
+
   return (
     <SitePageShell>
-      <ComingSoonNotice />
+      <Suspense
+        fallback={
+          <section className="news-feed-column">
+            <NewsFeedStatusLine message={translateNews("loading")} />
+          </section>
+        }
+      >
+        <NewsFeedPanel />
+      </Suspense>
     </SitePageShell>
   );
 }
