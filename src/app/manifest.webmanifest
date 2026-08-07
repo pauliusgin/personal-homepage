@@ -4,8 +4,8 @@
   "description": "Personal homepage of Paulius Giniūnas.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
+  "background_color": "#282827",
+  "theme_color": "#282827",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

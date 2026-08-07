@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
@@ -30,6 +30,16 @@ const terminus = localFont({
   variable: "--font-terminus",
   display: "swap",
 });
+
+// Colours the browser/OS chrome before the page paints, so a standalone launch
+// never shows white behind a dark page. Values mirror `--background` in
+// src/app/styles/variables.css — keep them in sync.
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#282827" },
+  ],
+};
 
 type LocaleRouteParams = Pick<LayoutProps<"/[locale]">, "params">;
 
