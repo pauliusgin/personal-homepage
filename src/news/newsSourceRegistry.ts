@@ -26,11 +26,6 @@ export const newsSourceRegistry: readonly NewsSourceRegistryEntry[] = [
   { sourceId: "lrt", displayName: "LRT", theme: "general-news" },
   { sourceId: "euronews", displayName: "Euronews", theme: "general-news" },
   {
-    sourceId: "wired-ai",
-    displayName: "WIRED: Artificial Intelligence",
-    theme: "software-development",
-  },
-  {
     sourceId: "dzone-security",
     displayName: "DZone Security Zone",
     theme: "software-development",

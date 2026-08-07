@@ -155,7 +155,6 @@ list).
 | `dzone-ai-ml`               | DZone AI/ML Zone                        | `software-development` |
 | `dzone-tools`               | DZone Tools Zone                        | `software-development` |
 | `crazy-programmer`          | The Crazy Programmer                    | `software-development` |
-| `wired-ai`                  | WIRED: Artificial Intelligence          | `software-development` |
 | `alex-edwards`              | Alex Edwards                            | `software-development` |
 | `eblog`                     | eblog: software articles by Efron Licht | `software-development` |
 | `modem-dev`                 | Modem Blog                              | `software-development` |

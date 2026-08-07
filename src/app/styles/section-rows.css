@@ -96,7 +96,7 @@
 }
 
 .section-row:hover .section-row-text {
-  transform: translateX(6px);
+  transform: translate(4px, -2px);
 }
 
 .section-row:hover .section-row-arrow,

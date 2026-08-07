@@ -171,7 +171,7 @@
 
 .news-theme-chip:hover .news-theme-chip-text,
 .news-theme-chip:focus-visible .news-theme-chip-text {
-  transform: translateX(6px);
+  transform: translate(4px, -2px);
 }
 
 .news-theme-chip[aria-pressed="true"] {
