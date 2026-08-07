@@ -72,7 +72,7 @@ export interface NewsSourceFailure {
 export interface NewsEnvelope {
   count: number; // always equals items.length
   items: NewsItem[]; // always an array, never null
-  failures?: NewsSourceFailure[]; // omitted entirely when every feed answered
+  failures: NewsSourceFailure[]; // always an array; [] when every feed answered
 }
 
 export interface NewsErrorEnvelope {
@@ -86,7 +86,8 @@ export interface HealthEnvelope {
 
 Three guarantees worth relying on:
 
-- `items` is `[]` when nothing matched, never `null`. No null check needed.
+- `items` and `failures` are `[]` when empty, never `null` and never absent. No null check
+  and no optional chaining needed on either.
 - `count === items.length`. It is a convenience, not a total-before-limit — see
   [No pagination](#no-pagination) below.
 - Items arrive **newest first**, ties broken by `sourceId` then `title`. The order is stable:
@@ -150,11 +151,11 @@ list).
 | --------------------------- | --------------------------------------- | ---------------------- |
 | `lrt`                       | LRT                                     | `general-news`         |
 | `euronews`                  | Euronews                                | `general-news`         |
-| `wired-ai`                  | WIRED: Artificial Intelligence          | `software-development` |
 | `dzone-security`            | DZone Security Zone                     | `software-development` |
 | `dzone-ai-ml`               | DZone AI/ML Zone                        | `software-development` |
 | `dzone-tools`               | DZone Tools Zone                        | `software-development` |
 | `crazy-programmer`          | The Crazy Programmer                    | `software-development` |
+| `wired-ai`                  | WIRED: Artificial Intelligence          | `software-development` |
 | `alex-edwards`              | Alex Edwards                            | `software-development` |
 | `eblog`                     | eblog: software articles by Efron Licht | `software-development` |
 | `modem-dev`                 | Modem Blog                              | `software-development` |
@@ -168,14 +169,14 @@ list).
 | `intl-accounting-bulletin`  | International Accounting Bulletin       | `finance`              |
 | `journal-of-accountancy`    | Journal of Accountancy                  | `finance`              |
 | `accounting-today`          | Accounting Today                        | `finance`              |
+| `ias-plus`                  | Deloitte's IAS Plus                     | `finance`              |
 
 An unknown source ID is a `400`.
 
 `ft-myft` is a special case: it is always a **valid** parameter value, but the server only
 actually fetches it when it was started with `FINANCIAL_TIMES_RSS_KEY` set. On a server
-without the key, `?source=ft-myft` returns `200` with an empty `items` and no `failures`
-entry — the source simply is not in that server's registry. Do not read empty-with-no-failure
-as an error.
+without the key, `?source=ft-myft` returns `200` with both `items` and `failures` empty — the
+source simply is not in that server's registry. Do not read empty-with-no-failure as an error.
 
 ## Status codes and error handling
 
@@ -224,14 +225,14 @@ and every other feed's items still come back:
 }
 ```
 
-`failures` is **omitted** when every feed answered — check `envelope.failures?.length`, not
-`envelope.failures.length`.
+`failures` is `[]` when every feed answered — `envelope.failures.length` is always safe, and
+so is iterating it without a guard.
 
 `message` is deliberately URL-free (some feed URLs embed an account key, and this endpoint is
 public). It is either an HTTP status line or one of a short fixed set: `request timed out`,
 `request cancelled`, `connection failed`, `feed host could not be resolved`,
-`invalid feed URL`, `building request: …`, `parsing feed: …`. Use `source` for display and
-`sourceId` for logic; do not parse `message`.
+`invalid feed URL`, `building request: …`, `parsing feed: …`, `unknown source format "…"`.
+Use `source` for display and `sourceId` for logic; do not parse `message`.
 
 Suggested UX: render the items normally and show a dismissible note listing the failed source
 names. A feed being down for one refresh is routine — do not blank the page over it.
@@ -272,7 +273,7 @@ recent matching items" — a stable, useful answer, but you cannot walk past it 
 Two workable strategies:
 
 1. **Fetch a window, page client-side.** Request `?limit=200` once, slice locally. The whole
-   registry is ~20 feeds, so full result sets are hundreds of items, not thousands.
+   registry is 21 sources, so full result sets are hundreds of items, not thousands.
 2. **Page by date.** After rendering a batch, take the oldest item's `publishedAt` and request
    `?until=<that timestamp>` for the next batch. Items sitting exactly on the bound are
    included, so drop the duplicate by `link` or by `sourceId` + `title`.
@@ -420,6 +421,3 @@ GET /api/news?source=lrt,euronews&limit=50
 # One theme, last 24 hours, using an exact instant.
 GET /api/news?theme=cybersecurity&since=2026-08-05T09:00:00Z
 ```
-
-## desired news page design:
-

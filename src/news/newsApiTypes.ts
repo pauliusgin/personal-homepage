@@ -50,15 +50,15 @@ export interface NewsSourceFailure {
 }
 
 /**
- * The `200` body. Server guarantees: `items` is `[]` rather than `null` when
- * nothing matched; `count === items.length` always (there is no pagination, so
- * it is never a total-before-limit); items arrive newest-first, ties broken by
- * `sourceId` then `title`.
+ * The `200` body. Server guarantees: `items` and `failures` are `[]` rather
+ * than `null` or absent when empty; `count === items.length` always (there is
+ * no pagination, so it is never a total-before-limit); items arrive
+ * newest-first, ties broken by `sourceId` then `title`.
  */
 export interface NewsEnvelope {
   count: number;
   items: NewsItem[];
-  failures?: NewsSourceFailure[];
+  failures: NewsSourceFailure[];
 }
 
 /** The body of every non-`200` response, including `404` and `405`. */

@@ -19,7 +19,7 @@ export interface NewsSourceRegistryEntry {
  *
  * `ft-myft` is always a valid `?source=` value, but the server only fetches it
  * when started with `FINANCIAL_TIMES_RSS_KEY` set. Without the key it answers
- * `200`, empty `items` and no `failures` entry, so empty-with-no-failure must
+ * `200` with both `items` and `failures` empty, so empty-with-no-failure must
  * never be rendered as an error.
  */
 export const newsSourceRegistry: readonly NewsSourceRegistryEntry[] = [
@@ -109,6 +109,11 @@ export const newsSourceRegistry: readonly NewsSourceRegistryEntry[] = [
   {
     sourceId: "accounting-today",
     displayName: "Accounting Today",
+    theme: "finance",
+  },
+  {
+    sourceId: "ias-plus",
+    displayName: "Deloitte's IAS Plus",
     theme: "finance",
   },
 ];
