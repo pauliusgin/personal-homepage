@@ -21,6 +21,7 @@ export async function SitePageShell({ children }: SitePageShellProps) {
         <SiteWordmark
           wordmarkText={translateRoot("wordmark")}
           shortWordmarkText={translateRoot("wordmarkShort")}
+          roleTitleText={translateRoot("roleTitle")}
           backToHomeLabel={translateRoot("nav.backToHome")}
         />
         <HeaderControlsCluster searchItems={searchItems} />

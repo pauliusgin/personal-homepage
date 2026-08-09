@@ -26,8 +26,9 @@
    is the narrowest supported width and this is the last breakpoint.
 
    The header keeps its 20px gutter, 20px gaps and 32px control height at every
-   width. Only two things change: the first name goes (`wordmark.css`) and the
-   search trigger drops to its glyph (`header-controls.css`).
+   width. Only two things change: the first name and the role title go
+   (`wordmark.css`) and the search trigger drops to its glyph
+   (`header-controls.css`).
 
    Measured at 16px Terminus (8px per character): "giniūnas" plus cursor and
    gutters is 114px (20 + 64 + 2 + 8 + 20), the cluster is 194px (20 + 50 + 20 +

@@ -5,7 +5,7 @@
 .wordmark {
   display: flex;
   align-items: center;
-  gap: 2px; /* tighter than the rows' 4px — the mark reads as one locked unit */
+  gap: 4px;
   padding: var(--page-gutter);
   /* Terminus ships 400 and 700 and nothing between, so any intermediate weight
      silently resolves to one of the two. */
@@ -23,6 +23,13 @@
   opacity: 0.9;
 }
 
+/* Secondary ink, like the ← that replaces it off the homepage — the name stays
+   the only element at full ink. The left margin plus the mark's 2px gap makes
+   the 8px Terminus space that the `|` would otherwise sit flush against. */
+.wordmark-role {
+  opacity: var(--ink-secondary-opacity);
+}
+
 /* Secondary ink rather than the wordmark's full ink, so it reads as a control
    beside the name, not part of it. The 20px glyph centred in a 24 × 24 box is
    what satisfies WCAG 2.5.8 (Target Size, Minimum). */
@@ -30,7 +37,7 @@
   display: inline-flex;
   flex: none;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   width: 24px;
   height: 24px;
   color: inherit;
@@ -47,7 +54,8 @@
 }
 
 /* One of the two things the header may change below 640px — see the width
-   budget in `header-band.css`. */
+   budget in `header-band.css`. The role title goes with the first name: the
+   budget has 12px of slack and the title costs 8 × 17 = 136px. */
 @media (width < --theme(--breakpoint-sm)) {
   .wordmark-full {
     display: none;
@@ -55,5 +63,9 @@
 
   .wordmark-short {
     display: inline;
+  }
+
+  .wordmark-role {
+    display: none;
   }
 }
