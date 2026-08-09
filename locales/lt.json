@@ -27,6 +27,7 @@
     "placeholder": ""
   },
   "aboutPage": {
+    "portraitAltText": "Paulius Mónsul paplūdimyje.",
     "paragraphs": [
       "Esu dviejų vaikų tėvas ir buvęs virėjas, prieš dvejus metus pakeitęs profesiją į programuotojus.",
       "Stengiuosi nuolat mokytis ko nors naujo, vis duoti smegenims darbo. Programavime visada yra ką išbandyti – šiuo metu mokausi Go ir eksperimentuoju, stengdamasis geriau išnaudoti AI įrankius.",
@@ -73,9 +74,9 @@
         ]
       },
       "gettingApp": {
-        "title": "GettingApp - backend programuotojas",
+        "title": "Backend programuotojas (GettingApp)",
         "descriptionParagraphs": [
-          "Mano patirtis - ne tik asmeniniai projektai. Dvejus metus dirbau backend programuotoju, teko tiek kurti projektus nuo nulio, tiek prižiūrėti veikiančias klientų turinčias aplikacijas. Darbe daugiausiai naudojau TypeScript ir PostgreSQL, taip pat Firebase ir Redis. Diegiau integracijas su „Stripe“, el. paštu, SMS ir push pranešimais ir kt.",
+          "Mano patirtis - ne tik asmeniniai projektai. Dvejus metus su GettingApp dirbau backend programuotoju, teko tiek kurti projektus nuo nulio, tiek prižiūrėti veikiančias klientų turinčias aplikacijas. Darbe daugiausiai naudojau TypeScript ir PostgreSQL, taip pat Firebase ir Redis. Diegiau integracijas su „Stripe“, el. paštu, SMS ir push pranešimais ir kt.",
           "Darbe taip pat tekdavo daug bendrauti ir su projektų vadovais, ir tiesiogiai su klientais, tikslinantis naujus reikalavimus ir numatant projektų įgyvendinimo terminus."
         ]
       }

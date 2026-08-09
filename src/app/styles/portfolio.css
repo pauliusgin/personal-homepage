@@ -11,7 +11,7 @@
   flex-direction: column;
   gap: 24px;
   width: 100%;
-  max-width: 100ch;
+  max-width: 90ch;
   margin: 0 auto;
   padding: 0 var(--page-gutter);
 }

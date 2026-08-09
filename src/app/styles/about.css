@@ -1,0 +1,29 @@
+.about-portrait {
+  width: 100%;
+  max-width: 70ch;
+  margin: 0 auto 24px;
+  padding: 0 var(--page-gutter);
+}
+
+.about-portrait-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+}
+
+.prose-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 70ch;
+  margin: 0 auto;
+  padding: 0 var(--page-gutter);
+}
+
+.prose-paragraph {
+  margin: 0;
+  line-height: 1.6;
+  text-wrap: pretty;
+}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
+import { AboutPortraitImage } from "@/components/about/AboutPortraitImage";
 import { AboutProseColumn } from "@/components/about/AboutProseColumn";
 import { SitePageShell } from "@/components/shell/SitePageShell";
 import { buildLocalizedPageTitle } from "@/i18n/buildLocalizedPageTitle";
@@ -25,6 +26,7 @@ export default async function AboutPage({
 
   return (
     <SitePageShell>
+      <AboutPortraitImage />
       <AboutProseColumn />
     </SitePageShell>
   );

@@ -5,8 +5,8 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-terminus), ui-monospace, SFMono-Regular, Menlo,
-    monospace;
+  font-family:
+    var(--font-terminus), ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* Spec §0: one size for the whole page, no leading. 16px is one of
      Terminus's native design sizes — the outlines are traced pixels, so the
@@ -15,29 +15,4 @@ body {
   font-weight: 400;
   line-height: 1em;
   letter-spacing: 0;
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
-   Prose column — /about
-
-   The one place on the site that sets leading: a paragraph at the body's 1em
-   is a solid block, so prose runs at 1.6 and nothing else inherits it. The
-   measure is in `ch` because the face is monospace — 66ch is exactly 66
-   characters at any zoom, the middle of the 45–75 readable range.
-   ───────────────────────────────────────────────────────────────────────────── */
-
-.prose-column {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  width: 100%;
-  max-width: 66ch;
-  margin: 0 auto;
-  padding: 0 var(--page-gutter);
-}
-
-.prose-paragraph {
-  margin: 0;
-  line-height: 1.6;
-  text-wrap: pretty;
 }

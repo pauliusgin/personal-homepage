@@ -27,6 +27,7 @@
     "placeholder": ""
   },
   "aboutPage": {
+    "portraitAltText": "Paulius at Playa de Mónsul.",
     "paragraphs": [
       "I'm a father of two and a former chef who transitioned into software development two years ago.",
       "I like to keep my brain busy by picking up new skills, both professionally and personally. As a developer, there's always something new to explore — I'm currently learning Go and experimenting with AI-assisted workflows.",
@@ -70,9 +71,9 @@
         ]
       },
       "gettingApp": {
-        "title": "GettingApp - backend developer",
+        "title": "Backend developer (GettingApp)",
         "descriptionParagraphs": [
-          "It's not only personal projects - I spent two years working professionally as a backend developer, building, deploying and maintaining production systems and features. My work included TypeScript and PostgreSQL, as well as Firebase and Redis, along with integrations for Stripe payments and subscriptions, email, messaging, and notification services.",
+          "It's not only personal projects - I spent two years working professionally as a backend developer with GettingApp, building, deploying and maintaining production systems and features. My work included TypeScript and PostgreSQL, as well as Firebase and Redis, along with integrations for Stripe payments and subscriptions, email, messaging, and notification services.",
           "The role also involved communicating with project managers and directly with clients, clarifying requirements and estimating timelines."
         ]
       }
