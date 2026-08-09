@@ -2,7 +2,7 @@
 
 import { Fragment } from "react";
 import { useTranslations } from "next-intl";
-import { newsThemeLabelMessageKeys } from "@/components/newsThemeLabelMessageKeys";
+import { newsThemeLabelMessageKeys } from "@/components/news/newsThemeLabelMessageKeys";
 import { DisclosureChevronIcon } from "@/components/icons/DisclosureChevronIcon";
 import { countSelectedSourcesInTheme } from "@/news/countSelectedSourcesInTheme";
 import { NEWS_THEMES, type NewsTheme } from "@/news/newsApiTypes";

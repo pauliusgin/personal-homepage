@@ -2,12 +2,12 @@
 
 import { useTranslations } from "next-intl";
 import { useCallback, useState } from "react";
-import { hasAnyActiveNewsFilter } from "@/components/hasAnyActiveNewsFilter";
-import { NewsArticleCountFloatContent } from "@/components/NewsArticleCountFloatContent";
-import { NewsDateRangeFloatContent } from "@/components/NewsDateRangeFloatContent";
-import { NewsFilterFloat } from "@/components/NewsFilterFloat";
-import { NewsSourceSelectionFloatContent } from "@/components/NewsSourceSelectionFloatContent";
-import { NewsThemeFilterChipRow } from "@/components/NewsThemeFilterChipRow";
+import { hasAnyActiveNewsFilter } from "@/components/news/hasAnyActiveNewsFilter";
+import { NewsArticleCountFloatContent } from "@/components/news/NewsArticleCountFloatContent";
+import { NewsDateRangeFloatContent } from "@/components/news/NewsDateRangeFloatContent";
+import { NewsFilterFloat } from "@/components/news/NewsFilterFloat";
+import { NewsSourceSelectionFloatContent } from "@/components/news/NewsSourceSelectionFloatContent";
+import { NewsThemeFilterChipRow } from "@/components/news/NewsThemeFilterChipRow";
 import { DisclosureChevronIcon } from "@/components/icons/DisclosureChevronIcon";
 import type { NewsTheme } from "@/news/newsApiTypes";
 import {

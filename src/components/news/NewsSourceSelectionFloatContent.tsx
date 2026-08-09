@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { newsThemeLabelMessageKeys } from "@/components/newsThemeLabelMessageKeys";
+import { newsThemeLabelMessageKeys } from "@/components/news/newsThemeLabelMessageKeys";
 import { countSelectedSourcesInTheme } from "@/news/countSelectedSourcesInTheme";
 import type { NewsTheme } from "@/news/newsApiTypes";
 import { findNewsSourcesInTheme } from "@/news/newsSourceRegistry";

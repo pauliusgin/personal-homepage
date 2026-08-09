@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
-import { ComingSoonNotice } from "@/components/ComingSoonNotice";
-import { SitePageShell } from "@/components/SitePageShell";
+import { PortfolioProjectList } from "@/components/portfolio/PortfolioProjectList";
+import { SitePageShell } from "@/components/shell/SitePageShell";
 import { buildLocalizedPageTitle } from "@/i18n/buildLocalizedPageTitle";
 
 export async function generateMetadata({
@@ -25,7 +25,7 @@ export default async function PortfolioPage({
 
   return (
     <SitePageShell>
-      <ComingSoonNotice />
+      <PortfolioProjectList />
     </SitePageShell>
   );
 }

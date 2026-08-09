@@ -34,6 +34,53 @@
       "Kai nesikuičiu kažką koduodamas savo nešiojamuoju kompiuteriu ar neleidžiu laiko su šeima, mėgstu pasinerti į kokybišką anime ar mangą. Taip pat vėl atrandu savo aistrą knygoms - bandau laviruoti tarp profesinėje srityje tobulėti padedančių techninių knygų ir mokslinės fantastikos, kurią skaitau savo malonumui."
     ]
   },
+  "portfolioPage": {
+    "liveSiteLinkLabel": "Svetainė",
+    "sourceRepositoryLinkLabel": "Kodas",
+    "expandDescriptionLabel": "Skaityti daugiau",
+    "collapseDescriptionLabel": "Rodyti mažiau",
+    "technologiesLabel": "Tech",
+    "projects": {
+      "curatedNews": {
+        "title": "Atrinktos naujienos",
+        "descriptionParagraphs": [
+          "Parašiau šią programėlę, nes atsibodo nuolat atsilikti nuo Lietuvos ir pasaulio įvykių.",
+          "Nežiūriu televizoriaus, o dauguma naujienų programėlių yra pripildytos reklamų, raginimų susimokėti ir panašaus triukšmo.",
+          "Idėja buvo sukurti greitai peržiūrimą naujienų srautą, kuris apjungtų naujienas iš skirtingų šaltinių (pagrinde RSS). Jei kas nors sudomina, visada galiu nueiti į originalų puslapį paskaityti visą straipsnį.",
+          "Prie srauto taip pat pridėjau ir temas, kurias vis norėjosi sekti (pvz., programavimas ir infosec), bet neturėjau kantrybės naršyti dešimtyse tinklaraščių ir kanalų.",
+          "Kadangi mano žmona taip pat turėjo labai panašią problemą, o dirba finansų srityje, pridėjau jai aktualių naujienų šaltinių, tokių kaip Financial Times.",
+          "Dabar kiekvienas gauname aiškų, glaustą ir suasmenintą naujienų srautą."
+        ]
+      },
+      "sistersArtGallery": {
+        "title": "Sesių meno galerija",
+        "descriptionParagraphs": [
+          "Ši svetainė buvo sukurta kaip galerija ir skaitmeninis archyvas, skirtas mūsų vaikų ankstyviesiems kūrybiniams ir meniniams darbams, kad net ir po daugelio metų galėtume užeiti čia ir prisiminti, nuo ko viskas prasidėjo.",
+          "Norėjau išsaugoti bent dalį jų piešinių ir kitokių meninių bandymų bei atradimų.",
+          "O ir po pasaulį išsibarsčiusiems šeimos nariams ir draugams tampa labai lengva pamatyti, kuo vaikai užsiima."
+        ]
+      },
+      "totalLineCount": {
+        "title": "Eilučių skaičius",
+        "descriptionParagraphs": [
+          "Pastebėjau, kad dažnai einu į failo pabaigą vien tam, kad pamatyčiau, kokio jis dydžio, tad šis VS Code priedas būtent tai ir daro – būsenos juostoje rodo atidaryto failo bendrą eilučių skaičių."
+        ]
+      },
+      "changeRoot": {
+        "title": "Pagrindinė direktorija",
+        "descriptionParagraphs": [
+          "Kartais man reikia pakeisti pagrindinę VS Code darbo direktoriją vienu ar keliais lygiais aukštyn arba gilyn, bet VS Code neturi patogaus būdo tai padaryti. Pamatęs, kaip tai daro Neovim priedas neo-tree.nvim, norėjau tokią pačią logiką pritaikyti ir VS Code."
+        ]
+      },
+      "gettingApp": {
+        "title": "GettingApp - backend programuotojas",
+        "descriptionParagraphs": [
+          "Mano patirtis - ne tik asmeniniai projektai. Dvejus metus dirbau backend programuotoju, teko tiek kurti projektus nuo nulio, tiek prižiūrėti veikiančias klientų turinčias aplikacijas. Darbe daugiausiai naudojau TypeScript ir PostgreSQL, taip pat Firebase ir Redis. Diegiau integracijas su „Stripe“, el. paštu, SMS ir push pranešimais ir kt.",
+          "Darbe taip pat tekdavo daug bendrauti ir su projektų vadovais, ir tiesiogiai su klientais, tikslinantis naujus reikalavimus ir numatant projektų įgyvendinimo terminus."
+        ]
+      }
+    }
+  },
   "newsPage": {
     "feedLabel": "Naujienų srautas",
     "filtersLabel": "Srauto filtrai",

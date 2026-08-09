@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
-import { AboutProseColumn } from "@/components/AboutProseColumn";
-import { SitePageShell } from "@/components/SitePageShell";
+import { AboutProseColumn } from "@/components/about/AboutProseColumn";
+import { SitePageShell } from "@/components/shell/SitePageShell";
 import { buildLocalizedPageTitle } from "@/i18n/buildLocalizedPageTitle";
 
 export async function generateMetadata({

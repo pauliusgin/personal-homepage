@@ -34,7 +34,6 @@ export const siteSections: SiteSectionDefinition[] = [
   },
   {
     translationKey: "portfolio",
-    // Real route, placeholder body — see src/components/ComingSoonNotice.tsx.
     href: "/portfolio",
     linkKind: "internal",
     LeadingIcon: FolderGlyphIcon,

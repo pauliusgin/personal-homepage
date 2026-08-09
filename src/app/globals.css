@@ -19,6 +19,7 @@
 @import "./styles/header/search-palette.css";
 @import "./styles/section-rows.css";
 @import "./styles/news-feed.css";
+@import "./styles/portfolio.css";
 @import "./styles/motion.css";
 
 html {

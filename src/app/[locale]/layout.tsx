@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeProvider } from "@/components/shared/ThemeProvider";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 

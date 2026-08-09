@@ -1,8 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { NewsFeedItemRow } from "@/components/NewsFeedItemRow";
-import { NewsFeedStatusLine } from "@/components/NewsFeedStatusLine";
+import { NewsFeedItemRow } from "@/components/news/NewsFeedItemRow";
+import { NewsFeedStatusLine } from "@/components/news/NewsFeedStatusLine";
 import type { NewsEnvelope } from "@/news/newsApiTypes";
 import { buildNewsItemIdentityKey } from "@/news/seenNewsItemStorage";
 

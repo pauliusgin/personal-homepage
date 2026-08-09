@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import type { SearchPaletteItem } from "@/components/SearchPalette";
+import type { SearchPaletteItem } from "@/components/header/SearchPalette";
 import { resolveSiteSectionRows } from "@/config/resolveSiteSectionRows";
 import { sitePageContentMessageKeys } from "@/config/sitePageContent";
 

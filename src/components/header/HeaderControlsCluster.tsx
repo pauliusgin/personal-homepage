@@ -1,9 +1,9 @@
-import { LocaleSwitcher } from "@/components/LocaleSwitcher";
+import { LocaleSwitcher } from "@/components/header/LocaleSwitcher";
 import {
   SearchPalette,
   type SearchPaletteItem,
-} from "@/components/SearchPalette";
-import { ThemeToggleButton } from "@/components/ThemeToggleButton";
+} from "@/components/header/SearchPalette";
+import { ThemeToggleButton } from "@/components/header/ThemeToggleButton";
 
 interface HeaderControlsClusterProps {
   searchItems: SearchPaletteItem[];

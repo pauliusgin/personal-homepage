@@ -1,0 +1,323 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Portfolio — /portfolio
+
+   Wider than the prose column: the thumbnail and its gap take 200px off the
+   measure, and the description still has to land inside the 45–75 character band
+   `typography.css` commits to.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.portfolio-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 100ch;
+  margin: 0 auto;
+  padding: 0 var(--page-gutter);
+}
+
+.portfolio-list {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.portfolio-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Thumbnail
+
+   180 × 140 for both kinds, so neighbouring rows' text columns line up whatever
+   image an entry brings.
+
+   `data-thumbnail-kind` carries the distinction the image file makes:
+
+   - `screenshot` — a rectangle: fills the box, takes the border, and widens to
+     the full measure once the row stacks, since 180px on a phone is unreadable.
+   - `logo` — art on transparency: `contain`, because cropping an icon clips its
+     own edges; no visible frame, because there is no rectangle to trace; and the
+     box holds its size when the row stacks, since a logo blown up to full width
+     is just a big logo.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.portfolio-item-thumbnail {
+  flex: none;
+  overflow: hidden;
+  width: 180px;
+  height: 140px;
+  border: 1px solid var(--border);
+  background-color: var(--accent-fill);
+}
+
+/* Transparent rather than removed: the border still occupies its 1px, so this
+   row's text column stays aligned with every screenshot row's. */
+.portfolio-item-thumbnail[data-thumbnail-kind="logo"] {
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.portfolio-item-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portfolio-item-thumbnail[data-thumbnail-kind="logo"] .portfolio-item-image {
+  object-fit: contain;
+}
+
+/* `min-width: 0` lets the column shrink below its content's intrinsic width —
+   without it a long unbroken title pushes the row wider than the column. */
+.portfolio-item-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Title and its link
+
+   A project with no links renders its title as plain text, so
+   `.portfolio-item-link` is simply absent and the bare `<p>` is styled no
+   differently — which is what keeps that row looking deliberate.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.portfolio-item-title {
+  margin: 0;
+  line-height: 1.6;
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
+}
+
+.portfolio-item-link {
+  color: inherit;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 900;
+  transition: color var(--duration-tint) var(--ease-out-expo);
+}
+
+.portfolio-item-link:hover {
+  color: var(--accent-primary);
+}
+
+/* Inline rather than pinned to an edge: the title wraps, and a pinned arrow
+   would float away from the last line it belongs to. */
+.portfolio-item-arrow {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  margin-left: 4px;
+  vertical-align: middle;
+  color: var(--accent-primary);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition:
+    transform var(--duration-travel) var(--ease-out-expo),
+    opacity var(--duration-tint) var(--ease-out-expo);
+}
+
+/* Revealed from anywhere in the entry, so the whole row answers the pointer.
+   Focus-visible gets it too — a keyboard user must never lose an affordance a
+   mouse user has. */
+.portfolio-item:hover .portfolio-item-arrow,
+.portfolio-item-link:focus-visible .portfolio-item-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Description
+
+   Left out of the anchor on purpose, so it stays drag-selectable.
+
+   A long write-up collapses to 100px — a shade over four lines at 16px/1.6 —
+   and opens from the toggle beneath. Height rather than `line-clamp`: the clamp
+   counts lines in one block and the copy is several paragraphs.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.portfolio-item-description {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.portfolio-item-description-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+  max-height: 100px;
+}
+
+.portfolio-item-description-body[data-expanded="true"] {
+  overflow: visible;
+  max-height: none;
+}
+
+/* The face is monospaced, so the only elastic thing on a justified line is the
+   word gaps: without `hyphens: auto` a long word pushes the whole line's spacing
+   open and the rivers show. It keys off the `lang` the locale layout sets. */
+.portfolio-item-description-paragraph {
+  margin: 0;
+  line-height: 1.6;
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* The cut falls mid-line, so the last visible line fades — a sentence stopping
+   dead reads as a rendering fault rather than as more text. A mask rather than a
+   gradient overlay: the row has no background of its own to match. */
+.portfolio-item-description-body:not([data-expanded="true"]) {
+  mask-image: linear-gradient(to bottom, #000 72px, transparent 100px);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Read more / read less
+
+   No arrow and no underline: it goes nowhere, and either would compete with the
+   title's ↗. Rendered only once the text measures as overflowing, so the row
+   never offers to expand copy that is already whole.
+
+   Full ink, like `.portfolio-item-secondary-link`: the site's 0.55 dim measures
+   3.5:1 in light mode, which no control may take.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.portfolio-item-description-toggle {
+  align-self: flex-start;
+  min-height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #8fb0d0;
+  font: inherit;
+  font-size: 12px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color var(--duration-tint) var(--ease-out-expo);
+}
+
+.portfolio-item-description-toggle:hover {
+  color: var(--accent-primary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Footer — what it is built in, and where it lives
+
+   Separate lines: tech from the left margin, links one line below against the
+   right edge the justified description holds, so a tech list long enough to wrap
+   never pushes the links out of alignment.
+
+   The links repeat the destination the title already points at — a labelled row
+   states where they go, where a linked title only implies it. The 24px
+   min-height is WCAG 2.5.8 Target Size, Minimum.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.portfolio-item-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* A line of words, not tags: a language is a fact about the entry, not an axis a
+   reader can act on, and a filled tag would read as another control. Full
+   opacity — the site's 0.55 dim over the accent drops it below the contrast
+   floor. */
+.portfolio-item-tech-row {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+}
+
+.portfolio-item-link-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  margin: 0;
+}
+
+.portfolio-item-secondary-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 24px;
+  color: inherit;
+  opacity: var(--ink-secondary-opacity);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color var(--duration-tint) var(--ease-out-expo);
+}
+
+.portfolio-item-secondary-link:hover {
+  color: var(--accent-primary);
+}
+
+.portfolio-item-secondary-link-icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Focus
+
+   `--accent-secondary`, never a signal hue: an orange ring beside the orange
+   hover tint would read as a hover rather than as focus.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.portfolio-item-link:focus-visible,
+.portfolio-item-secondary-link:focus-visible,
+.portfolio-item-description-toggle:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: 3px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Responsive
+
+   The type never shrinks and nothing drops: an entry has no secondary part. The
+   row stacks instead and a screenshot takes the full measure — at 320px that is
+   35 characters of text, narrow, but 16px throughout, which is the trade this
+   site makes at its floor.
+
+   A logo keeps its box and centres over the stack. Left-aligned it would sit
+   against the text's edge with a ragged gap beside it, which reads as a layout
+   fault rather than as a mark.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (width < --theme(--breakpoint-sm)) {
+  .portfolio-item {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .portfolio-item-thumbnail[data-thumbnail-kind="screenshot"] {
+    width: 100%;
+    height: 160px;
+  }
+
+  .portfolio-item-thumbnail[data-thumbnail-kind="logo"] {
+    align-self: center;
+  }
+
+  .portfolio-item-body {
+    width: 100%;
+  }
+}

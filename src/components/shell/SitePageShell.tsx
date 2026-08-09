@@ -1,8 +1,8 @@
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
-import { HeaderControlsCluster } from "@/components/HeaderControlsCluster";
-import { SiteFooterBand } from "@/components/SiteFooterBand";
-import { SiteWordmark } from "@/components/SiteWordmark";
+import { HeaderControlsCluster } from "@/components/header/HeaderControlsCluster";
+import { SiteFooterBand } from "@/components/shell/SiteFooterBand";
+import { SiteWordmark } from "@/components/shell/SiteWordmark";
 import { resolveSearchPaletteItems } from "@/config/resolveSearchPaletteItems";
 
 interface SitePageShellProps {

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Suspense } from "react";
-import { NewsFeedPanel } from "@/components/NewsFeedPanel";
-import { NewsFeedStatusLine } from "@/components/NewsFeedStatusLine";
-import { SitePageShell } from "@/components/SitePageShell";
+import { NewsFeedPanel } from "@/components/news/NewsFeedPanel";
+import { NewsFeedStatusLine } from "@/components/news/NewsFeedStatusLine";
+import { SitePageShell } from "@/components/shell/SitePageShell";
 import { buildLocalizedPageTitle } from "@/i18n/buildLocalizedPageTitle";
 
 export async function generateMetadata({

@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { SectionRowLink } from "@/components/SectionRowLink";
+import { SectionRowLink } from "@/components/home/SectionRowLink";
 import { resolveSiteSectionRows } from "@/config/resolveSiteSectionRows";
 
 export async function HomeSectionList() {

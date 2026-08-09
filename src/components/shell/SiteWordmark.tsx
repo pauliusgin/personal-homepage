@@ -1,4 +1,4 @@
-import { BackToHomeArrowLink } from "@/components/BackToHomeArrowLink";
+import { BackToHomeArrowLink } from "@/components/shell/BackToHomeArrowLink";
 
 interface SiteWordmarkProps {
   wordmarkText: string;

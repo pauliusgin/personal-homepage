@@ -5,8 +5,7 @@ files to touch, in order. If a recipe says three files, touching three files is
 enough — nothing else in the app needs to know.
 
 Written for the current state of the site: homepage row list, `/about`,
-placeholder `/portfolio` and `/news`, two locales (`en`, `lt`), light/dark theme,
-⌘K search.
+`/portfolio`, `/news`, two locales (`en`, `lt`), light/dark theme, ⌘K search.
 
 ---
 
@@ -44,12 +43,15 @@ src/
   app/
     [locale]/page.tsx         homepage
     [locale]/about/page.tsx   /about
-    [locale]/portfolio/page.tsx, [locale]/news/page.tsx   placeholder routes
+    [locale]/portfolio/page.tsx  /portfolio — project list
+    [locale]/news/page.tsx       /news — news feed
     [locale]/layout.tsx       <html>, font, theme + intl providers, metadata
     globals.css               the import list = the CSS cascade order
     styles/                   all CSS (see §7)
     fonts/                    Terminus woff2 subsets
-  components/                 one component per file, named after what it exports
+  components/                 one component per file, named after what it exports,
+                              in a per-feature subdirectory — news/, portfolio/,
+                              home/, about/, header/, shell/, shared/
   components/icons/           one glyph per file, all 20px / 24-unit grid
   i18n/                       routing, navigation helpers, message loading
   proxy.ts                    locale middleware (Next 16 name for middleware.ts)
@@ -116,16 +118,16 @@ That's it. The row appears on the homepage and in ⌘K.
 
 Five files. Do 2a first with `linkKind: "internal"` and `href: "/uses"`, then:
 
-**4. Create `src/app/[locale]/uses/page.tsx`.** Copy
-`src/app/[locale]/portfolio/page.tsx` and change three things — the two
-`PageProps<"/[locale]/portfolio">` type arguments, the
-`sectionTranslationKey: "portfolio"`, and the body component:
+**4. Create `src/app/[locale]/uses/page.tsx`.** Start from the stub below and
+change three things — the two `PageProps<"/[locale]/uses">` type arguments, the
+`sectionTranslationKey: "uses"`, and the body component once the page has real
+content. `ComingSoonNotice` is the placeholder body every route starts on:
 
 ```tsx
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
-import { ComingSoonNotice } from "@/components/ComingSoonNotice";
-import { SitePageShell } from "@/components/SitePageShell";
+import { ComingSoonNotice } from "@/components/shared/ComingSoonNotice";
+import { SitePageShell } from "@/components/shell/SitePageShell";
 import { buildLocalizedPageTitle } from "@/i18n/buildLocalizedPageTitle";
 
 export async function generateMetadata({
@@ -200,16 +202,16 @@ Almost all copy is in `locales/en.json` + `locales/lt.json`. **Keep both files
 the same shape** — same keys, same nesting, arrays the same length is not
 required but is a good idea.
 
-| What you want to change               | Key                                                                                                            |
-| ------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| /about bio                            | `aboutPage.paragraphs` — array, one entry per `<p>`                                                            |
-| Wordmark (top left)                   | `wordmark`, and `wordmarkShort` (shown under 640px)                                                            |
-| Placeholder body on /portfolio, /news | `comingSoon`                                                                                                   |
-| Footer line                           | `footer.placeholder` (empty today — see the TODO in `SiteFooterBand.tsx`; rename the key when real copy lands) |
-| Browser tab title / meta description  | `metadata.title`, `metadata.description`                                                                       |
-| Header control + a11y labels          | `nav.*`                                                                                                        |
-| Theme toggle words                    | `theme.light`, `theme.dark`                                                                                    |
-| ⌘K placeholder + empty state          | `nav.searchPlaceholder`, `search.empty`                                                                        |
+| What you want to change              | Key                                                                                                            |
+| ------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
+| /about bio                           | `aboutPage.paragraphs` — array, one entry per `<p>`                                                            |
+| Wordmark (top left)                  | `wordmark`, and `wordmarkShort` (shown under 640px)                                                            |
+| Placeholder body on a stub route     | `comingSoon`                                                                                                   |
+| Footer line                          | `footer.placeholder` (empty today — see the TODO in `SiteFooterBand.tsx`; rename the key when real copy lands) |
+| Browser tab title / meta description | `metadata.title`, `metadata.description`                                                                       |
+| Header control + a11y labels         | `nav.*`                                                                                                        |
+| Theme toggle words                   | `theme.light`, `theme.dark`                                                                                    |
+| ⌘K placeholder + empty state         | `nav.searchPlaceholder`, `search.empty`                                                                        |
 
 **/about specifically:** add, remove or rewrite entries in
 `aboutPage.paragraphs` in both locale files. Each entry becomes one paragraph;
@@ -258,8 +260,8 @@ Rules:
 1. `src/i18n/routing.ts` — add the code to `locales`.
 2. `locales/<code>.json` — copy `en.json` and translate every key.
 3. `locales/*.json` — update `nav.toggleLanguage` in all files.
-4. `src/components/LocaleSwitcher.tsx` — it toggles between two locales today; a
-   third means turning that toggle into a picker.
+4. `src/components/header/LocaleSwitcher.tsx` — it toggles between two locales
+   today; a third means turning that toggle into a picker.
 
 Messages are loaded by filename in `src/i18n/request.ts`; nothing else to wire.
 

@@ -11,16 +11,16 @@ import {
   useState,
   useSyncExternalStore,
 } from "react";
-import { hasAnyActiveNewsFilter } from "@/components/hasAnyActiveNewsFilter";
-import { NewsFeedFilterControls } from "@/components/NewsFeedFilterControls";
-import { NewsFeedItemList } from "@/components/NewsFeedItemList";
-import { NewsSourceFailureNotice } from "@/components/NewsSourceFailureNotice";
+import { hasAnyActiveNewsFilter } from "@/components/news/hasAnyActiveNewsFilter";
+import { NewsFeedFilterControls } from "@/components/news/NewsFeedFilterControls";
+import { NewsFeedItemList } from "@/components/news/NewsFeedItemList";
+import { NewsSourceFailureNotice } from "@/components/news/NewsSourceFailureNotice";
 import {
   NO_NEWS_FEED_REQUEST_OUTCOME,
   resolveNewsFeedViewState,
   type NewsFeedRequestOutcome,
-} from "@/components/resolveNewsFeedViewState";
-import { useStoredNewsFeedFilterRestore } from "@/components/useStoredNewsFeedFilterRestore";
+} from "@/components/news/resolveNewsFeedViewState";
+import { useStoredNewsFeedFilterRestore } from "@/components/news/useStoredNewsFeedFilterRestore";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { fetchCuratedNews } from "@/news/fetchCuratedNews";
 import { resolveNewsApiBaseUrl } from "@/news/newsApiBaseUrl";

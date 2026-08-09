@@ -1,6 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
-import { HomeSectionList } from "@/components/HomeSectionList";
-import { SitePageShell } from "@/components/SitePageShell";
+import { HomeSectionList } from "@/components/home/HomeSectionList";
+import { SitePageShell } from "@/components/shell/SitePageShell";
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;

@@ -3,7 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 import { ExternalArrowIcon } from "@/components/icons/ExternalArrowIcon";
-import { newsThemeLabelMessageKeys } from "@/components/newsThemeLabelMessageKeys";
+import { newsThemeLabelMessageKeys } from "@/components/news/newsThemeLabelMessageKeys";
 import { formatNewsItemPublishedAtWithAge } from "@/news/formatNewsItemPublishedAt";
 import type { NewsItem } from "@/news/newsApiTypes";
 

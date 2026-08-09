@@ -34,6 +34,50 @@
       "When I'm not tinkering with something coding-related on my laptop or spending time with my family, you'll probably find me enjoying a quality anime or reading manga. I'm also rediscovering my passion for books, trying to strike a balance between technical books that help me grow as a developer and science fiction that lets me unwind."
     ]
   },
+  "portfolioPage": {
+    "liveSiteLinkLabel": "Live site",
+    "sourceRepositoryLinkLabel": "Source",
+    "expandDescriptionLabel": "Read more",
+    "collapseDescriptionLabel": "Show less",
+    "technologiesLabel": "Tech",
+    "projects": {
+      "curatedNews": {
+        "title": "Curated News",
+        "descriptionParagraphs": [
+          "I built this app because I realized I was constantly falling behind on what was happening in the world. I don’t watch TV, and most news apps I tried were packed with ads, distractions and noise.",
+          "The idea was to create a minimal, ad-free feed that aggregates news from different sources, mostly through RSS, and presents it as a quick overview of what’s happening. If something catches my attention, I can follow it to the original source. I also added topics I regularly wanted to keep up with, like software development and cybersecurity, without having to constantly browse dozens of blogs and outlets myself.",
+          "It started as a solution for me, but my wife also had a very similar problem. Since she works in finance, I added news sources relevant to her. Now we each get a curated feed of what we actually care about: clear, concise, personalized."
+        ]
+      },
+      "sistersArtGallery": {
+        "title": "Sisters’ Art Gallery",
+        "descriptionParagraphs": [
+          "This website is meant to be a gallery and a digital archive for our kids’ early creative and artistic works, so that even years from now we can come in and remember how it all began.",
+          "The idea was to preserve at least some of these fleeting artistic attempts and discoveries, rather than letting them disappear into boxes and forgotten folders.",
+          "It also gives family and friends around the world an easy way to see what the kids have been up to."
+        ]
+      },
+      "totalLineCount": {
+        "title": "Total Line Count",
+        "descriptionParagraphs": [
+          "Quite often I found myself going to the end of a file just to see how large it was, so this VS Code extension is meant to make my life easier by showing the active file’s total line count in the status bar."
+        ]
+      },
+      "changeRoot": {
+        "title": "Change Root",
+        "descriptionParagraphs": [
+          "I occasionally need to change the workspace root one or two levels up or down, but I’ve always found the default way of doing it in VS Code somewhat cumbersome. After seeing how neo-tree.nvim handles it, I wanted to bring a similar experience to VS Code."
+        ]
+      },
+      "gettingApp": {
+        "title": "GettingApp - backend developer",
+        "descriptionParagraphs": [
+          "It's not only personal projects - I spent two years working professionally as a backend developer, building, deploying and maintaining production systems and features. My work included TypeScript and PostgreSQL, as well as Firebase and Redis, along with integrations for Stripe payments and subscriptions, email, messaging, and notification services.",
+          "The role also involved communicating with project managers and directly with clients, clarifying requirements and estimating timelines."
+        ]
+      }
+    }
+  },
   "newsPage": {
     "feedLabel": "News feed",
     "filtersLabel": "Feed filters",
